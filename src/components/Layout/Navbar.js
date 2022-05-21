@@ -50,7 +50,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 lg:px-10 shadow">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabindex="0" className="btn btn-ghost lg:hidden">
@@ -76,7 +76,7 @@ const Navbar = () => {
             {menuItem}
           </ul>
         </div>
-        <h3 className="btn btn-ghost normal-case text-xl">daisyUI</h3>
+        <h3 className="btn btn-ghost normal-case text-xl">Computer-Store</h3>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItem}</ul>
