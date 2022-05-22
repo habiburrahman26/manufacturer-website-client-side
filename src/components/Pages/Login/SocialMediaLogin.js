@@ -8,10 +8,13 @@ import auth from '../../../firebase.init';
 import LoadingSpinner from '../../Shared/LoadingSpinner';
 import google from '../../../assets/icon/google-svgrepo-com.svg';
 import facebook from '../../../assets/icon/facebook-svgrepo-com.svg';
+import useToken from '../../../hooks/useToken';
 
 const SocialMediaLogin = ({ setSocialIsLoading }) => {
   const [signInWithGoogle, gUser, gLoading] = useSignInWithGoogle(auth);
   const [signInWithFacebook, fUser, fLoading] = useSignInWithFacebook(auth);
+
+  const { token } = useToken(gUser || fUser);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,10 +22,10 @@ const SocialMediaLogin = ({ setSocialIsLoading }) => {
   const from = location?.state?.from?.pathname || '/';
 
   useEffect(() => {
-    if (gUser || fUser) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [gUser, fUser, from, navigate]);
+  }, [token, from, navigate]);
 
   if (gLoading || fLoading) {
     return <LoadingSpinner />;

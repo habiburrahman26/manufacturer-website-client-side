@@ -7,7 +7,8 @@ import {
 } from 'react-firebase-hooks/auth';
 import LoadingSpinner from '../../Shared/LoadingSpinner';
 import SocialMediaLogin from '../Login/SocialMediaLogin';
-import auth from '../../../firebase.init'
+import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 
 const Signup = () => {
   const {
@@ -19,14 +20,15 @@ const Signup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const { token } = useToken(user);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate('/home', { replace: true });
     }
-  }, [user,navigate]);
+  }, [token, navigate]);
 
   if (loading || updating) {
     return <LoadingSpinner />;
