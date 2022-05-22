@@ -1,8 +1,22 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import auth from '../../firebase.init';
+import LoadingSpinner from '../Shared/LoadingSpinner';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
   const location = useLocation();
+  const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  const logOut = () => {
+    localStorage.removeItem('accessToken');
+    signOut(auth);
+  };
 
   const menuItem = (
     <>
@@ -38,14 +52,25 @@ const Navbar = () => {
           Contact Us
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/login"
-          className={({ isActive }) => (isActive ? 'bg-accent text-white' : '')}
-        >
-          Login
-        </NavLink>
-      </li>
+      {!user && (
+        <li>
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? 'bg-accent text-white' : ''
+            }
+          >
+            Login
+          </NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <button className="btn btn-secondary btn-outline" onClick={logOut}>
+            Sign Out
+          </button>
+        </li>
+      )}
     </>
   );
 

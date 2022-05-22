@@ -6,6 +6,7 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/Pages/Login/Login';
 import SignUp from './components/Pages/Signup/SignUp';
+import Purchase from './components/Pages/Purchase/Purchase';
 
 const client = new QueryClient();
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/purchase/:id" element={<Purchase />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
