@@ -79,7 +79,7 @@ const Navbar = () => {
         </li>
       )}
       {user && (
-        <li>
+        <li className='ml-2'>
           <button className="btn btn-secondary btn-outline" onClick={logOut}>
             Sign Out
           </button>

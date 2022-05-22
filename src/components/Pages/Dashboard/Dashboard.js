@@ -1,23 +1,45 @@
+import axios from 'axios';
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import auth from '../../../firebase.init';
+import useAdmin from '../../../hooks/useAdmin';
+import LoadingSpinner from '../../Shared/LoadingSpinner';
 
 const Dashboard = () => {
+  const location = useLocation();
+  const [user, loading] = useAuthState(auth);
+  const [admin, isLoading] = useAdmin(user);
+
+  if (loading || isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div class="drawer drawer-mobile mt-1">
       <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex flex-col items-center justify-center">
-        <p>Welcome to Dashboard</p>
+        {location.pathname === '/dashboard' && (
+          <h2 className="text-2xl lg:text-4xl font-semibold text-green-400">
+            Welcome to dashboard
+          </h2>
+        )}
         <Outlet />
       </div>
       <div class="drawer-side">
         <label htmlFor="dashboard-drawer" class="drawer-overlay"></label>
         <ul class="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content">
-          <li>
-            <NavLink to="myOrder">My Orders</NavLink>
-          </li>
-          <li>
-            <NavLink to="addReview">Add Review</NavLink>
-          </li>
+          {!admin && (
+            <>
+              <li>
+                <NavLink to="myOrders">My Orders</NavLink>
+              </li>
+              <li>
+                <NavLink to="addReview">Add Review</NavLink>
+              </li>
+            </>
+          )}
           <li>
             <NavLink to="myProfile">My Profile</NavLink>
           </li>
