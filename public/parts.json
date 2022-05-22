@@ -1,6 +1,5 @@
 [
   {
-    "id": "1",
     "name": "HP U28 28 4K UHD HDR Monitor",
     "description": "HP U28 comes with 28 4K UHD (3840 x 2160) @60 Hz display. This monitor is built with an IPS panel, HDR, and wide viewing angles, this 4K HP U28 monitor lets you create picture-perfect content. The HP U28 Monitor has 1 HDMI 2.0, 2 USB Type-C (DisplayPort 1.2, power delivery up to 65 W), 1 DisplayPort 1.2, 3 USB-A 3.1 Gen 1 ports, and connectivity. Its Adjustable display stand provides Adjustable Tilt and Height, Pivot, Swivel Stand with On-screen controls, Low blue light mode. The HP U28 monitor has On-screen controls, Low blue light mode, this Latest HP U28 4K UHD monitor offers 03 years warranty.",
     "minimumOrderQuantity": "10",
@@ -9,7 +8,6 @@
     "unitPrice": "58500"
   },
   {
-    "id": "2",
     "name": "Asus PRIME H310M-AT R2.0 9th and 8th Gen mATX Motherboard",
     "description": "The Asus PRIME H310M-AT R2.0 Motherboard is compatible with Intel Socket 1151 for 9th/8th Gen Core, Pentium Gold & Celeron Processors. It provides the solid foundation needed for your first build, plus flexibility to grow with your ambitions. It features the most comprehensive cooling controls ever, configurable via ASUS Fan Xpert software or the UEFI BIOS. Q-Fan Control Can configure the fan's operating speed manually or use the easy pre-configured fan profiles to select Standard, Silent, Turbo, or Full Speed modes, plus an automatic switch to full speed if the temperature hits 75°C.",
     "minimumOrderQuantity": "10",
@@ -18,7 +16,6 @@
     "unitPrice": "7500"
   },
   {
-    "id": "3",
     "name": "Intel 10th Gen Core i3 10100 Processor",
     "description": "This processor comes with a new breed that come with an enabled integrated GPU, so a separate graphics card is not required for its functionality. This new 10th gen Comet Lake microarchitecture is manufactured with the 14nm process that comes with four cores but lacks in HyperThreading. As this chip is updated to the latest BIOS revision, it nicely fits into any Intel 300-series motherboard. Focusing on this, all the major motherboard manufacturers have already started BIOS updates for their 300-series lineup",
     "minimumOrderQuantity": "20",
@@ -27,7 +24,6 @@
     "unitPrice": "10500"
   },
   {
-    "id": "4",
     "name": "Intel 10th Gen Core i5-10400F Processor",
     "description": "Intel 10th Generation Core i5-10400F Processor having the base frequency of 2.90 GHz that can be reached as max turbo frequency at 4.30 GHz. It has the SmartCache of 12 MB containing 6 cores and 12 threads. With the bus speed of 8 GT/s DMI3, it has thermal design power (TDP) rating of 65W. This latest microchip has few expansion options such 3.0 PCI express revision having configured up to 1x16, 2x8, 1x8+2x4, and maximum 16 lanes. Considering the memory this processor has dual-channel of max 128GB of the size that supports up to DDR4-2666 bus speed.",
     "minimumOrderQuantity": "20",
@@ -36,7 +32,6 @@
     "unitPrice": "13950"
   },
   {
-    "id": "5",
     "name": "AMD Ryzen 5 Pro 4650G Processor with Radeon Graphics",
     "description": "The AMD Ryzen 5 Pro 4650G Processor with Radeon Graphics is built in intelligence featuring 6 processor cores, 12 threads, and an astonishingly efficient 45-65W TDP. In this processor, It stands with 3.7GHz Base Clock, 4.2GHz Max Boost Clock, 3MB L2 Cache, 8MB L3 Cache with AM4 Package and TSMC 7nm FinFET CMOS. This processor is built with PCIe 3.0 x8 and Wraith Spire Thermal Solution. The AMD Ryzen 5 Pro 4650G Processor provides DDR4 Up to 3200MHz memory with 2 memory channels. With the high processing capability, this processor is also integrated with Radeon Graphics. The processor has a graphics frequency of 1900MHz and a graphics Core count of 7. The AMD Ryzen 5 Pro 4650G Processor is built for modern business, AMD PRO technologies provide layers of protection, seamless manageability, and reliable longevity.",
     "minimumOrderQuantity": "20",
@@ -45,12 +40,19 @@
     "unitPrice": "15000"
   },
   {
-    "id": "6",
     "name": "GIGABYTE GeForce GT 730 2GB GDDR5 PCI EXPRESS Graphics Card",
     "description": "The GIGABYTE GeForce GT 730 Graphics Card featured with an active fansink cooler, which forces air through a heatsink in order to dissipate heat from the GPU. It helps to recirculate the exhaust inside the case, this card is best used with cases that have adequate ventilation. This GIGABYTE GeForce GT 730 helps to Increase your computer's video performance.This GIGABYTE GeForce GT 730 Graphics Card featured with 902 MHz Core Clock, 28 nm Process Technology, 5000 MHz Memory Clock, with GDDR5 Type memory. The Graphics card core is connected to the 2GB of GDDR5 vRAM with a 64-bit interface. This GT 730 Graphics Card can also increase the speed of the computer when programs are accelerated using the GPU cores, and freeing up CPU cycles, and it is the best suited to high-resolution video playback or light, low-resolution gaming.",
     "minimumOrderQuantity": "15",
     "availableQuantity": "200",
     "image": "https://i.ibb.co/9bwVSzb/geforce-gt-730-001-228x228.jpg",
     "unitPrice": "8000"
+  },
+  {
+    "name": "Samsung 870 EVO 500GB 2.5 Inch SATA III Internal SSD",
+    "description": "The latest 870 EVO inherits the legacy of Samsung’s pioneering SSD technology, that boasting upgraded performance, reliability, and compatibility to suit the needs of anyone from contents creators, IT professionals. Samsung 870 EVO Internal SSD comes with Highly reliable and sustainable performance. This SSD featurted with Up to 560 MB/s sequential read and 530 MB/s write, Up to 2,400 TBW guaranteed endurance. The Samsung 870 EVO achieves the maximum SATA interface limit of 560/530 MB/s sequential speeds. you can now enjoy professional-level SSD performance. Intelligent Turbo Write accelerates write speeds and maintains long-term high performance with a larger variable buffer.",
+    "minimumOrderQuantity": "10",
+    "availableQuantity": "150",
+    "image": "https://i.ibb.co/yX2dQ26/870-evo-01-228x228.jpg",
+    "unitPrice": "6500"
   }
 ]
