@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import {
+  useSignInWithFacebook,
+  useSignInWithGoogle,
+} from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import LoadingSpinner from '../../Shared/LoadingSpinner';
+import google from '../../../assets/icon/google-svgrepo-com.svg';
+import facebook from '../../../assets/icon/facebook-svgrepo-com.svg';
 
 const SocialMediaLogin = ({ setSocialIsLoading }) => {
-  const [signInWithGoogle, user, loading] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, gUser, gLoading] = useSignInWithGoogle(auth);
+  const [signInWithFacebook, fUser, fLoading] = useSignInWithFacebook(auth);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,23 +19,30 @@ const SocialMediaLogin = ({ setSocialIsLoading }) => {
   const from = location?.state?.from?.pathname || '/';
 
   useEffect(() => {
-    if (user) {
+    if (gUser || fUser) {
       navigate(from, { replace: true });
     }
-  }, [user, from, navigate]);
+  }, [gUser, fUser, from, navigate]);
 
-  if (loading) {
+  if (gLoading || fLoading) {
     return <LoadingSpinner />;
   }
 
   return (
-    <div className="w-full my-3">
+    <div className="flex justify-center gap-4">
       <button
         type="submit"
-        className="btn hover:bg-accent btn-outline w-full"
+        className="btn border-primary  btn-outline"
         onClick={() => signInWithGoogle()}
       >
-        Continue with Google
+        <img src={google} className="w-6 h-6" alt="" />
+      </button>
+      <button
+        type="submit"
+        className="btn border-primary  btn-outline"
+        onClick={() => signInWithFacebook()}
+      >
+        <img src={facebook} className="w-6 h-6" alt="" />
       </button>
     </div>
   );
