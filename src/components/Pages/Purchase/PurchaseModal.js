@@ -56,7 +56,7 @@ const PurchaseModal = ({
     axios.put('http://localhost:5000/purchase', purchase).then(({ data }) => {
       if (data.insertedId) {
         setIsLoading(false);
-        toast.success(`You order place Successfully`);
+        toast.success(`You order ${name} place Successfully`);
         setShowModal('');
         refetch();
       }
