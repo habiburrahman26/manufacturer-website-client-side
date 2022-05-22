@@ -12,7 +12,7 @@ const Purchase = () => {
   const [showModal, setShowModal] = useState(false);
   const [user, loading] = useAuthState(auth);
 
-  const { data, isLoading, isError, error } = useQuery(['part-by-id', id], () =>
+  const { data, isLoading, isError, error,refetch } = useQuery(['part-by-id', id], () =>
     axios.get(`http://localhost:5000/parts/${id}`)
   );
 
@@ -63,6 +63,7 @@ const Purchase = () => {
           setShowModal={setShowModal}
           parts={data?.data}
           {...user}
+          refetch={refetch}
         />
       )}
     </div>

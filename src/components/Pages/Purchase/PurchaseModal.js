@@ -1,17 +1,66 @@
-import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { useState } from 'react';
+import { set, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
-const PurchaseModal = ({ setShowModal, parts, displayName, email }) => {
+const PurchaseModal = ({
+  setShowModal,
+  parts,
+  displayName,
+  email,
+  refetch,
+}) => {
+  const { _id, name, unitPrice, minimumOrderQuantity, availableQuantity } =
+    parts;
+
+  const [quantity, setQuantity] = useState(minimumOrderQuantity);
+  const [quantityError, setQuantityError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
-  const { name, unitPrice, image, minimumOrderQuantity, availableQuantity } =
-    parts;
+
+  const handleQuantity = (e) => {
+    setQuantity(e.target.value);
+  };
 
   const onSubmit = (data) => {
-    console.log(data);
+    if (+quantity < minimumOrderQuantity) {
+      setQuantityError(`You can't order less than ${minimumOrderQuantity}`);
+      return;
+    }
+
+    if (+quantity > availableQuantity) {
+      console.log('gretter');
+      setQuantityError(`You can't order more than ${availableQuantity}`);
+      return;
+    }
+
+    const purchase = {
+      productId: _id,
+      productName: name,
+      buyer: email,
+      buyerName: displayName,
+      phone: data.phone,
+      address: data.address,
+      unitPrice: unitPrice,
+      totalPrice: +quantity * +unitPrice,
+      quantity: quantity,
+    };
+
+    setIsLoading(true);
+    axios.put('http://localhost:5000/purchase', purchase).then(({ data }) => {
+      if (data.insertedId) {
+        setIsLoading(false);
+        toast.success(`You order place Successfully`);
+        setShowModal('');
+        refetch();
+      }
+    });
   };
 
   return (
@@ -22,7 +71,11 @@ const PurchaseModal = ({ setShowModal, parts, displayName, email }) => {
           <label
             htmlFor="purchase-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
-            onClick={()=>reset()}
+            onClick={() => {
+              reset();
+              setQuantity(minimumOrderQuantity);
+              setQuantityError('');
+            }}
           >
             ✕
           </label>
@@ -57,6 +110,30 @@ const PurchaseModal = ({ setShowModal, parts, displayName, email }) => {
             </div>
             <div className="form-control w-full max-w-xs">
               <label className="label">
+                <span className="label-text">Quantity</span>
+              </label>
+              <input
+                type="number"
+                className="input input-bordered w-full max-w-xs"
+                {...register('quantity', {
+                  required: true,
+                })}
+                value={quantity}
+                onChange={handleQuantity}
+              />
+              {errors.quantity?.type === 'required' && (
+                <span className="label-text-alt text-red-400">
+                  Quantity is Required
+                </span>
+              )}
+              {quantityError && (
+                <span className="label-text-alt text-red-400">
+                  {quantityError}
+                </span>
+              )}
+            </div>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
                 <span className="label-text">Phone</span>
               </label>
               <input
@@ -86,8 +163,12 @@ const PurchaseModal = ({ setShowModal, parts, displayName, email }) => {
             </div>
 
             <div className="form-control w-full max-w-xs mt-4">
-              <button type="submit" className="btn btn-secondary max-w-sm">
-                Confirm
+              <button
+                type="submit"
+                className="btn btn-secondary max-w-sm"
+                disabled={isLoading ? true : false}
+              >
+                {isLoading ? 'Confirm...' : 'Confirm'}
               </button>
             </div>
           </form>

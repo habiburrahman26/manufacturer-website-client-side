@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/Pages/Login/Login';
 import SignUp from './components/Pages/Signup/SignUp';
 import Purchase from './components/Pages/Purchase/Purchase';
+import RequireAuth from './components/Shared/RequireAuth';
 
 const client = new QueryClient();
 
@@ -18,7 +19,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/purchase/:id" element={<Purchase />} />
+          <Route
+            path="/purchase/:id"
+            element={
+              <RequireAuth>
+                <Purchase />
+              </RequireAuth>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
