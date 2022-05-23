@@ -1,7 +1,5 @@
-import axios from 'axios';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useQuery } from 'react-query';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import useAdmin from '../../../hooks/useAdmin';
@@ -12,6 +10,7 @@ const Dashboard = () => {
   const [user, loading] = useAuthState(auth);
   const [admin, isLoading] = useAdmin(user);
 
+  
   if (loading || isLoading) {
     return <LoadingSpinner />;
   }
@@ -33,7 +32,9 @@ const Dashboard = () => {
           {!admin && (
             <>
               <li>
-                <NavLink to="myOrders">My Orders</NavLink>
+                <NavLink to="myOrders">
+                  My Orders
+                </NavLink>
               </li>
               <li>
                 <NavLink to="addReview">Add Review</NavLink>
