@@ -16,6 +16,7 @@ import AllUser from './components/Pages/ManageUsers/AllUser';
 import ManageOrders from './components/Pages/ManageOrders/ManageOrders';
 import ManageProduct from './components/Pages/ManageProduct/ManageProduct';
 import AddProduct from './components/Pages/Dashboard/AddProduct';
+import RequireAdmin from './components/Shared/RequireAdmin';
 
 const client = new QueryClient();
 
@@ -46,10 +47,38 @@ function App() {
             <Route path="myOrders" element={<MyOrders />} />
             <Route path="addReview" element={<AddReview />} />
             <Route path="myProfile" element={<MyProfile />} />
-            <Route path="allUsers" element={<AllUser />} />
-            <Route path="manageAllOrders" element={<ManageOrders />} />
-            <Route path="addProduct" element={<AddProduct />} />
-            <Route path="manageProducts" element={<ManageProduct />} />
+            <Route
+              path="allUsers"
+              element={
+                <RequireAdmin>
+                  <AllUser />
+                </RequireAdmin>
+              }
+            />
+            <Route
+              path="manageAllOrders"
+              element={
+                <RequireAdmin>
+                  <ManageOrders />
+                </RequireAdmin>
+              }
+            />
+            <Route
+              path="addProduct"
+              element={
+                <RequireAdmin>
+                  <AddProduct />
+                </RequireAdmin>
+              }
+            />
+            <Route
+              path="manageProducts"
+              element={
+                <RequireAdmin>
+                  <ManageProduct />
+                </RequireAdmin>
+              }
+            />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />

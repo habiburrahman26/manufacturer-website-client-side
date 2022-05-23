@@ -8,9 +8,9 @@ import LoadingSpinner from '../../Shared/LoadingSpinner';
 const Dashboard = () => {
   const location = useLocation();
   const [user, loading] = useAuthState(auth);
-  const [admin, isLoading] = useAdmin(user);
+  const [admin, adminLoading] = useAdmin(user);
 
-  if (loading || isLoading) {
+  if (loading || adminLoading) {
     return <LoadingSpinner />;
   }
 
