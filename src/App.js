@@ -11,7 +11,7 @@ import RequireAuth from './components/Shared/RequireAuth';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import MyOrders from './components/Pages/Dashboard/MyOrders';
 import AddReview from './components/Pages/Dashboard/AddReview';
-import MyProfile from './components/Pages/Dashboard/MyProfile';
+import MyProfile from './components/Pages/MyProfile/MyProfile';
 
 const client = new QueryClient();
 
@@ -39,7 +39,7 @@ function App() {
               </RequireAuth>
             }
           >
-            <Route path='myOrders' element={<MyOrders />} />
+            <Route path="myOrders" element={<MyOrders />} />
             <Route path="addReview" element={<AddReview />} />
             <Route path="myProfile" element={<MyProfile />} />
           </Route>

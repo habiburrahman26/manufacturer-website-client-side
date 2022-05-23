@@ -16,9 +16,9 @@ const Dashboard = () => {
   }
 
   return (
-    <div class="drawer drawer-mobile mt-1">
-      <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content flex flex-col items-center justify-center">
+    <div className="drawer drawer-mobile mt-1">
+      <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col items-center justify-center">
         {location.pathname === '/dashboard' && (
           <h2 className="text-2xl lg:text-4xl font-semibold text-green-400">
             Welcome to dashboard
@@ -26,9 +26,9 @@ const Dashboard = () => {
         )}
         <Outlet />
       </div>
-      <div class="drawer-side">
-        <label htmlFor="dashboard-drawer" class="drawer-overlay"></label>
-        <ul class="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content">
+      <div className="drawer-side">
+        <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content">
           {!admin && (
             <>
               <li>

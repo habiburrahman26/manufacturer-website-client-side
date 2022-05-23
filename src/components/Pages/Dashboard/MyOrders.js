@@ -30,8 +30,8 @@ const MyOrders = () => {
   return (
     <div>
       <h1 className='text-2xl font-semibold text-center mb-6'>My Orders</h1>
-      <div class="overflow-auto max-w-sm px-3 md:max-w-2xl lg:max-w-5xl">
-        <table class="table">
+      <div className="overflow-auto max-w-sm px-3 md:max-w-2xl lg:max-w-5xl">
+        <table className="table">
           <thead>
             <tr>
               <th></th>

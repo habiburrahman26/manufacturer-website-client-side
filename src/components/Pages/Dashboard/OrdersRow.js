@@ -20,7 +20,7 @@ const OrdersRow = ({
           <button className="btn btn-xs btn-secondary">Pay</button>
         )}
         {totalPrice && paid && (
-          <div class="text-secondary">
+          <div className="text-secondary">
             <p className=''>paid </p>
             <p>transactionId:79748347328</p>
           </div>

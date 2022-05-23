@@ -120,12 +120,12 @@ const Navbar = () => {
       <div className="navbar-end">
         <label
           htmlFor="dashboard-drawer"
-          class="btn btn-circle swap swap-rotate drawer-button lg:hidden"
+          className="btn btn-circle swap swap-rotate drawer-button lg:hidden"
         >
           <input type="checkbox" />
 
           <svg
-            class="swap-off fill-current"
+            className="swap-off fill-current"
             xmlns="http://www.w3.org/2000/svg"
             width="32"
             height="32"
@@ -135,7 +135,7 @@ const Navbar = () => {
           </svg>
 
           <svg
-            class="swap-on fill-current"
+            className="swap-on fill-current"
             xmlns="http://www.w3.org/2000/svg"
             width="32"
             height="32"
