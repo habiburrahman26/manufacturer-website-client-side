@@ -5,8 +5,9 @@ import LoadingSpinner from '../../Shared/LoadingSpinner';
 import UserRow from './UserRow';
 
 const AllUser = () => {
-  const { data, isLoading, isError, error } = useQuery('all-user', () =>
-    axios.get('http://localhost:5000/user')
+  const { data, isLoading, isError, error, refetch } = useQuery(
+    'all-user',
+    () => axios.get('http://localhost:5000/user')
   );
 
   if (isLoading) {
@@ -31,7 +32,15 @@ const AllUser = () => {
           </thead>
           <tbody>
             {data?.data.map((u, i) => (
-              <UserRow key={u._id} sl={i + 1} _id={u._id} email={u.email} name={u.name} role={u.role}/>
+              <UserRow
+                key={u._id}
+                sl={i + 1}
+                _id={u._id}
+                email={u.email}
+                name={u.name}
+                role={u.role}
+                refetch={refetch}
+              />
             ))}
           </tbody>
         </table>

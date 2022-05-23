@@ -100,7 +100,7 @@ const Login = () => {
             Login
           </button>
         </div>
-        <p className="text-md mt-6">
+        <p className="text-md mt-6 text-center">
           New to Doctors Portal?{' '}
           <Link to="/signup" className="text-secondary">
             Create account
