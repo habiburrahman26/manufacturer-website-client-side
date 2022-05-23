@@ -10,7 +10,6 @@ const Dashboard = () => {
   const [user, loading] = useAuthState(auth);
   const [admin, isLoading] = useAdmin(user);
 
-  
   if (loading || isLoading) {
     return <LoadingSpinner />;
   }
@@ -32,12 +31,26 @@ const Dashboard = () => {
           {!admin && (
             <>
               <li>
-                <NavLink to="myOrders">
-                  My Orders
-                </NavLink>
+                <NavLink to="myOrders">My Orders</NavLink>
               </li>
               <li>
                 <NavLink to="addReview">Add Review</NavLink>
+              </li>
+            </>
+          )}
+          {admin && (
+            <>
+              <li>
+                <NavLink to="allUsers">All User</NavLink>
+              </li>
+              <li>
+                <NavLink to="manageAllOrders">Manage All Orders</NavLink>
+              </li>
+              <li>
+                <NavLink to="addProduct">Add Product</NavLink>
+              </li>
+              <li>
+                <NavLink to="manageProducts">Manage Products</NavLink>
               </li>
             </>
           )}

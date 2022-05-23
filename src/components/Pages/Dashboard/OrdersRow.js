@@ -6,7 +6,7 @@ const OrdersRow = ({
   quantity,
   unitPrice,
   totalPrice,
-  paid = true,
+  paid = false,
 }) => {
   return (
     <tr>

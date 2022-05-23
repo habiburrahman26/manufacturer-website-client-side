@@ -42,16 +42,16 @@ const MyProfile = () => {
           <img src={user?.photoURL || profile} alt="" />
         </div>
       </div>
-      <div className="text-center">
+      <div className="text-center max-w-2xl">
         {!showEdit && (
           <>
             <h2 className="text-xl lg:text-2xl font-semibold">
               {user?.displayName}
             </h2>
-            <h2 className="text-base lg:text-xl">{user?.email}</h2>
-            {data?.data.bio && <p>{data?.data.bio}</p>}
+            <h2 className="text-base lg:text-xl mb-3">{user?.email}</h2>
+            {data?.data.bio && <p className='text-sm'>{data?.data.bio}</p>}
             {data?.data.education && (
-              <div className="flex justify-center items-center gap-2 text-base">
+              <div className="flex justify-center items-center gap-2 text-base mt-3">
                 <img src={education} alt="" className="w-4 h-4" />
                 <p>{data?.data.education}</p>
               </div>
