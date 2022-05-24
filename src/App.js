@@ -19,6 +19,7 @@ import AddProduct from './components/Pages/Dashboard/AddProduct';
 import RequireAdmin from './components/Shared/RequireAdmin';
 import Payment from './components/Pages/Payment/Payment';
 import MyProtfolio from './components/Pages/MyProtfolio/MyProtfolio';
+import NotFound from './components/Pages/NotFound.js/NotFound';
 
 const client = new QueryClient();
 
@@ -86,6 +87,7 @@ function App() {
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </QueryClientProvider>
       <ToastContainer />
