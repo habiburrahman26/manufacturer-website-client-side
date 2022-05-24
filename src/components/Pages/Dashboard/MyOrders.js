@@ -1,13 +1,15 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../../firebase.init';
 import LoadingSpinner from '../../Shared/LoadingSpinner';
+import OrderCancelModal from './OrderCancelModal';
 import OrdersRow from './OrdersRow';
 
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
+  const [showCancelModal, setShowCancelModal] = useState(null);
 
   const { data, isLoading, isError, error } = useQuery(
     ['my-orders', user],
@@ -29,7 +31,7 @@ const MyOrders = () => {
 
   return (
     <div>
-      <h1 className='text-2xl font-semibold text-center mb-6'>My Orders</h1>
+      <h1 className="text-2xl font-semibold text-center mb-6">My Orders</h1>
       <div className="overflow-auto max-w-sm px-3 md:max-w-2xl lg:max-w-5xl">
         <table className="table">
           <thead>
@@ -52,10 +54,14 @@ const MyOrders = () => {
                 quantity={p.quantity}
                 unitPrice={p.unitPrice}
                 totalPrice={p.totalPrice}
+                setShowCancelModal={setShowCancelModal}
               />
             ))}
           </tbody>
         </table>
+        {showCancelModal && (
+          <OrderCancelModal showCancelModal={showCancelModal} />
+        )}
       </div>
     </div>
   );
