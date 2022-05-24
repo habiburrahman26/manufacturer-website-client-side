@@ -11,7 +11,7 @@ const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
   const [showCancelModal, setShowCancelModal] = useState(null);
 
-  const { data, isLoading, isError, error } = useQuery(
+  const { data, isLoading, isError, error, refetch } = useQuery(
     ['my-orders', user],
     () => {
       const email = user?.email;
@@ -60,7 +60,10 @@ const MyOrders = () => {
           </tbody>
         </table>
         {showCancelModal && (
-          <OrderCancelModal showCancelModal={showCancelModal} />
+          <OrderCancelModal
+            showCancelModal={showCancelModal}
+            refetch={refetch}
+          />
         )}
       </div>
     </div>
