@@ -1,12 +1,20 @@
 import React from 'react';
 
-const ProductRow = ({ sl, name, image, availableQuantity, unitPrice }) => {
+const ProductRow = ({
+  sl,
+  _id,
+  name,
+  image,
+  availableQuantity,
+  unitPrice,
+  setShowModal,
+}) => {
   return (
     <tr>
       <th>{sl}</th>
       <td>
-        <div class="avatar">
-          <div class="w-8 rounded">
+        <div className="avatar">
+          <div className="w-8 rounded">
             <img src={image} alt="Tailwind-CSS-Avatar-component" />
           </div>
         </div>
@@ -14,6 +22,15 @@ const ProductRow = ({ sl, name, image, availableQuantity, unitPrice }) => {
       <td>{name}</td>
       <td>{availableQuantity}</td>
       <td>{unitPrice}</td>
+      <td>
+        <label
+          htmlFor="product-delete-modal"
+          className="btn btn-xs btn-error modal-button"
+          onClick={() => setShowModal({_id,name})}
+        >
+          Delete
+        </label>
+      </td>
     </tr>
   );
 };

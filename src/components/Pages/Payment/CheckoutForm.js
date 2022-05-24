@@ -117,7 +117,7 @@ const CheckoutForm = ({ id, buyer, buyerName, price }) => {
           Pay
         </button>
       ) : (
-        <button class="btn btn-square btn-primary btn-sm loading"></button>
+        <button className="btn btn-square btn-primary btn-sm loading"></button>
       )}
       {cardError && <p className="text-red-400">{cardError}</p>}
       {success && (

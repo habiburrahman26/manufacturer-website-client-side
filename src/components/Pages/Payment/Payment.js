@@ -28,8 +28,8 @@ const Payment = () => {
   const { productName, buyer, buyerName, totalPrice, quantity } = data?.data;
   return (
     <div>
-      <div class="card w-96 bg-base-100 shadow-xl mb-10">
-        <div class="card-body">
+      <div className="card w-96 bg-base-100 shadow-xl mb-10">
+        <div className="card-body">
           <p className="font-semibold">
             Product Name: <span className="text-orange-400">{productName}</span>
           </p>
@@ -39,8 +39,8 @@ const Payment = () => {
           </p>
         </div>
       </div>
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <div class="card-body">
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card-body">
           <Elements stripe={stripePromise}>
             <CheckoutForm
               price={totalPrice}

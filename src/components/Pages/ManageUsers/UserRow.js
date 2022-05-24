@@ -28,7 +28,7 @@ const UserRow = ({ sl, email, name, role, refetch }) => {
             Make Admin
           </button>
         ) : (
-          <div class="badge badge-success">admin</div>
+          <div className="badge badge-success">admin</div>
         )}
       </td>
     </tr>

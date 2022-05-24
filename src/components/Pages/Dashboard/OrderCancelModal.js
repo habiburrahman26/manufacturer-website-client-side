@@ -31,21 +31,21 @@ const OrderCancelModal = ({ showCancelModal, refetch }) => {
 
   return (
     <div>
-      <input type="checkbox" id="cancel-order-modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-          <p class="font-semibold text-red-400 text-base">
+      <input type="checkbox" id="cancel-order-modal" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <p className="font-semibold text-red-400 text-base">
             Are You sure you want to delete {name}?
           </p>
-          <div class="modal-action">
+          <div className="modal-action">
             <label
               for="cancel-order-modal"
-              class="btn btn-secondary btn-sm"
+              className="btn btn-secondary btn-sm"
               onClick={() => deleteOrder(_id)}
             >
               Ok
             </label>
-            <label for="cancel-order-modal" class="btn btn-sm">
+            <label for="cancel-order-modal" className="btn btn-sm">
               Cancel
             </label>
           </div>
