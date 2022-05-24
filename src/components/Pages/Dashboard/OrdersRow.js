@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const OrdersRow = ({
   sl,
   _id,
@@ -5,7 +7,8 @@ const OrdersRow = ({
   quantity,
   unitPrice,
   totalPrice,
-  paid = false,
+  paid,
+  transactionId,
   setShowCancelModal,
 }) => {
   return (
@@ -19,11 +22,13 @@ const OrdersRow = ({
         <td>
           {totalPrice && !paid && (
             <>
-              <button className="btn btn-xs btn-secondary">Pay</button>
+              <Link to={`/dashboard/payment/${_id}`}>
+                <button className="btn btn-xs btn-secondary">Pay</button>
+              </Link>
               <label
                 for="cancel-order-modal"
                 class="btn btn-xs btn-error ml-2 modal-button"
-                onClick={()=>setShowCancelModal({_id,name})}
+                onClick={() => setShowCancelModal({ _id, name })}
               >
                 Cancel
               </label>
@@ -32,7 +37,7 @@ const OrdersRow = ({
           {totalPrice && paid && (
             <div className="text-secondary">
               <p className="">paid </p>
-              <p>transactionId:79748347328</p>
+              <p className='text-x'>TransactionId:{transactionId}</p>
             </div>
           )}
         </td>

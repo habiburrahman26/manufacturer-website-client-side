@@ -17,6 +17,7 @@ import ManageOrders from './components/Pages/ManageOrders/ManageOrders';
 import ManageProduct from './components/Pages/ManageProduct/ManageProduct';
 import AddProduct from './components/Pages/Dashboard/AddProduct';
 import RequireAdmin from './components/Shared/RequireAdmin';
+import Payment from './components/Pages/Payment/Payment';
 
 const client = new QueryClient();
 
@@ -47,6 +48,7 @@ function App() {
             <Route path="myOrders" element={<MyOrders />} />
             <Route path="addReview" element={<AddReview />} />
             <Route path="myProfile" element={<MyProfile />} />
+            <Route path="payment/:id" element={<Payment />} />
             <Route
               path="allUsers"
               element={

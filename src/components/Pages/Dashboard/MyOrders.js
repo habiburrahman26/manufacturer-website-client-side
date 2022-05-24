@@ -46,16 +46,7 @@ const MyOrders = () => {
           </thead>
           <tbody>
             {data?.data.map((p, i) => (
-              <OrdersRow
-                key={p._id}
-                sl={i + 1}
-                _id={p._id}
-                name={p.productName}
-                quantity={p.quantity}
-                unitPrice={p.unitPrice}
-                totalPrice={p.totalPrice}
-                setShowCancelModal={setShowCancelModal}
-              />
+              <OrdersRow key={p._id} sl={i + 1} {...p} />
             ))}
           </tbody>
         </table>
