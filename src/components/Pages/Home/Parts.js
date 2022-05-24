@@ -12,14 +12,14 @@ const Parts = () => {
     return <p className='text-center py-10 text-xl'>Loading...</p>;
   }
 
-  const parts = data?.data.slice(0, 6);
+  const parts = data?.data;
 
   return (
     <div className="py-24 px-3">
       <h2 className="text-lg lg:text-3xl uppercase font-semibold text-primary text-center pb-8">
         Our Parts
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:max-w-7xl mx-auto">
         {parts.map((part) => (
           <PartsList key={part._id} part={part} />
         ))}

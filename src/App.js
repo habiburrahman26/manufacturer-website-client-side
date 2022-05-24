@@ -18,6 +18,7 @@ import ManageProduct from './components/Pages/ManageProduct/ManageProduct';
 import AddProduct from './components/Pages/Dashboard/AddProduct';
 import RequireAdmin from './components/Shared/RequireAdmin';
 import Payment from './components/Pages/Payment/Payment';
+import MyProtfolio from './components/Pages/MyProtfolio/MyProtfolio';
 
 const client = new QueryClient();
 
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/protfolio" element={<MyProtfolio />} />
           <Route
             path="/purchase/:id"
             element={

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
 const EditProfile = ({
-  name,
   email,
   bio,
   location,
@@ -14,7 +13,6 @@ const EditProfile = ({
   refetch,
 }) => {
   const [updateFrom, setUpdateFrom] = useState({
-    name: name || '',
     bio: bio || '',
     phone: phone || '',
     education: education || '',
@@ -23,9 +21,6 @@ const EditProfile = ({
   });
   const [updateProfileIsLoading, setUpdateProfileIsLoading] = useState(false);
 
-  const nameChange = (e) => {
-    setUpdateFrom({ ...updateFrom, name: e.target.value });
-  };
   const bioChange = (e) => {
     setUpdateFrom({ ...updateFrom, bio: e.target.value });
   };
@@ -66,15 +61,6 @@ const EditProfile = ({
       onSubmit={handleSubmit}
       className="w-[300px] lg:w-[320px] mt-2 flex flex-col gap-2 items-center"
     >
-      <div className="form-control w-full max-w-xs">
-        <input
-          type="text"
-          placeholder="Name"
-          className="input input-bordered input-sm w-full max-w-xs"
-          value={updateFrom.name}
-          onChange={nameChange}
-        />
-      </div>
       <div className="form-control w-full max-w-xs">
         <input
           type="text"

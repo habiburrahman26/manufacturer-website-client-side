@@ -19,7 +19,7 @@ const AllUser = () => {
   }
 
   return (
-    <div>
+    <div className="max-h-[600px] mt-10 overflow-auto">
       <div className="overflow-auto max-w-sm px-3 md:max-w-2xl lg:max-w-5xl">
         <table className="table">
           <thead>

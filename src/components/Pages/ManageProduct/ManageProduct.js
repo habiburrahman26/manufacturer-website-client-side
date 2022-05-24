@@ -22,7 +22,7 @@ const ManageProduct = () => {
   }
 
   return (
-    <div>
+    <div className='max-h-[600px] mt-10 overflow-auto'>
       <div className="overflow-auto max-w-sm px-3 md:max-w-3xl lg:max-w-6xl">
         <table className="table">
           <thead>

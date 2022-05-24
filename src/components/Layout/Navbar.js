@@ -48,10 +48,10 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/contactus"
+          to="/protfolio"
           className={({ isActive }) => (isActive ? 'bg-accent text-white' : '')}
         >
-          Contact Us
+          My Protfolio
         </NavLink>
       </li>
       {user && (
@@ -79,7 +79,7 @@ const Navbar = () => {
         </li>
       )}
       {user && (
-        <li className='ml-2'>
+        <li className="ml-2">
           <button className="btn btn-secondary btn-outline" onClick={logOut}>
             Sign Out
           </button>
