@@ -1,14 +1,8 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import user from '../../../assets/profile.jpg';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-
-import './style.css';
-
-// import required modules
 import { Pagination, Autoplay } from 'swiper';
 import { useQuery } from 'react-query';
 import axios from 'axios';
@@ -44,13 +38,16 @@ export default function Review() {
   const reverseReview = [...review].reverse();
 
   return (
-    <div className="pb-24" id='review'>
+    <div
+      className="pb-24 w-[300px] md:w-[900px] lg:w-[1350px] mx-auto px-3 lg:px-8"
+      id="review"
+    >
       <h2 className="text-lg lg:text-2xl uppercase font-semibold text-primary text-center pb-6">
         Happy Clients says
       </h2>
       <Swiper
         slidesPerView={slide}
-        spaceBetween={30}
+        spaceBetween={50}
         pagination={{
           clickable: true,
         }}
@@ -59,11 +56,11 @@ export default function Review() {
           disableOnInteraction: false,
         }}
         modules={[Autoplay, Pagination]}
-        className="mySwiper w-[300px] md:w-[900px] lg:w-[1200px] mx-auto px-3"
+        className="mySwiper"
       >
         {reverseReview.map((r) => (
           <SwiperSlide key={r._id} className="mb-14">
-            <div className="flex flex-col items-center shadow-lg rounded-lg p-6 text-base h-[320px] lg:h-[300px]">
+            <div className="flex flex-col items-center shadow-lg rounded-lg p-6 text-base h-[320px] lg:h-[280px]">
               <div class="avatar mb-2">
                 <div class="w-16 rounded-full">
                   <img src={r.img || user} alt="" />

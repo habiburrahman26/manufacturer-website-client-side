@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../../Shared/Footer';
 import Banner from './Banner';
+import Brands from './Brands';
 import BusinessSummary from './BusinessSummary';
 import OurServices from './OurServices';
 import Parts from './Parts';
@@ -12,6 +13,7 @@ const Home = () => {
       <Banner />
       <BusinessSummary />
       <Parts />
+      <Brands/>
       <OurServices />
       <Review />
       <Footer />
