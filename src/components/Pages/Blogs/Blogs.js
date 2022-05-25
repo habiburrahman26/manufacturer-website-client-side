@@ -30,14 +30,14 @@ const Blogs = () => {
           properties from a prototype.
         </p>
       </div>
-      <div className="border-2 mt-4 rounded-md p-4"></div>
       <div className="border-2 mt-4 rounded-md p-4">
         <h3 className="text-base lg:text-lg font-semibold">
           You have an array of products. Each product has a name, price,
           description, etc. How will you implement a search to find products by
-          name?{' '}
+          name?
         </h3>
         <p>
+          //search input text <br/>
           const [search, setSearch] = useState(null); <br />
           const searchProducts = products.filter((p) =>
           p.name.toLowerCase().includes(search.toLowerCase()) );

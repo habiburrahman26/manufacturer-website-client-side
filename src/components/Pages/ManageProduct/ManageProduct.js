@@ -16,7 +16,7 @@ const ManageProduct = () => {
       })
   );
   const [showModal, setShowModal] = useState(null);
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState('');
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -27,7 +27,7 @@ const ManageProduct = () => {
   }
 
   const products = data?.data.filter((p) =>
-    p.name.toLowerCase().includes(search.toLowerCase())
+    p?.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
