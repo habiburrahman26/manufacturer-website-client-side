@@ -40,14 +40,6 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/reviews"
-          className={({ isActive }) => (isActive ? 'bg-accent text-white' : '')}
-        >
-          Reviews
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
           to="/protfolio"
           className={({ isActive }) => (isActive ? 'bg-accent text-white' : '')}
         >

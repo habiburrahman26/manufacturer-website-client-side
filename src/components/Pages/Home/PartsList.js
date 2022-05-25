@@ -12,8 +12,8 @@ const PartsList = ({ part }) => {
   } = part;
 
   return (
-    <div className="card card-compact bg-base-100 shadow-lg">
-      <figure>
+    <div className="card card-compact bg-base-100 border-2 hover:shadow-lg hover:border-primary transition-all duration-200 ">
+      <figure className='mt-2'>
         <img src={image} alt="parts" className='w-[150px]'/>
       </figure>
       <div className="card-body">
