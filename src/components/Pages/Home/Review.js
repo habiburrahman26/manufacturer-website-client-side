@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-// Import Swiper React components
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import user from '../../../assets/profile.jpg'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -62,7 +62,7 @@ export default function Review() {
             <div className="flex flex-col items-center shadow-lg rounded-lg p-6 text-base h-[300px]">
               <div class="avatar mb-2">
                 <div class="w-16 rounded-full">
-                  <img src={r.img} alt="" />
+                  <img src={r.img || user} alt="" />
                 </div>
               </div>
               <p className="font-semibold mb-2">{r.name}</p>
