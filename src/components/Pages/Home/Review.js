@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 import './style.css';
 
 // import required modules
-import { Pagination } from 'swiper';
+import { Pagination,Autoplay } from 'swiper';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import ScreenSize from '../../../hooks/ScreenSize';
@@ -40,7 +40,8 @@ export default function Review() {
     slide = 1;
   }
 
-  const l = data?.data.reverse();
+  const l = data?.data;
+  l.reverse()
   console.log(l);
 
   return (
@@ -54,7 +55,11 @@ export default function Review() {
         pagination={{
           clickable: true,
         }}
-        modules={[Pagination]}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay,Pagination]}
         className="mySwiper w-[300px] md:w-[900px] lg:w-[1200px] mx-auto px-3"
       >
         {data?.data.map((r) => (
