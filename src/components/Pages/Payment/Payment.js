@@ -14,7 +14,7 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useQuery('payment-order', () =>
-    axios.get(`http://localhost:5000/purchase/${id}`)
+    axios.get(`https://serene-bayou-83359.herokuapp.com/purchase/${id}`)
   );
 
   if (isLoading) {

@@ -35,7 +35,7 @@ const AddProduct = () => {
           };
 
           axios
-            .post('http://localhost:5000/parts', parts, {
+            .post('https://serene-bayou-83359.herokuapp.com/parts', parts, {
               headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
               },

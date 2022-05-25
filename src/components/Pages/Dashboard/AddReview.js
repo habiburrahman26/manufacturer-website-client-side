@@ -22,7 +22,7 @@ const AddReview = () => {
     };
 
     axios
-      .post('http://localhost:5000/review', review, {
+      .post('https://serene-bayou-83359.herokuapp.com/review', review, {
         headers: {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },

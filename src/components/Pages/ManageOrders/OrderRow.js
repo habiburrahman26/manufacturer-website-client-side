@@ -11,7 +11,7 @@ const OrderRow = ({
   refetch,
 }) => {
   const changeStatus = (id) => {
-    fetch(`http://localhost:5000/purchase/status/${id}`, {
+    fetch(`https://serene-bayou-83359.herokuapp.com/purchase/status/${id}`, {
       method: 'PUT',
       headers: {
         authorization: `Bearer ${localStorage.getItem('accessToken')}`,

@@ -9,7 +9,7 @@ const ManageOrders = () => {
   const { data, isLoading, isError, error, refetch } = useQuery(
     'all-orders',
     () =>
-      axios.get('http://localhost:5000/order', {
+      axios.get('https://serene-bayou-83359.herokuapp.com/order', {
         headers: {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },

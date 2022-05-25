@@ -6,7 +6,7 @@ const OrderCancelModal = ({ showCancelModal, refetch }) => {
   const { _id, name } = showCancelModal;
 
   const deleteOrder = (id) => {
-    fetch(`http://localhost:5000/order/purchase/${id}`, {
+    fetch(`https://serene-bayou-83359.herokuapp.com/order/purchase/${id}`, {
       method: 'PUT',
       headers: {
         authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -15,7 +15,7 @@ const OrderCancelModal = ({ showCancelModal, refetch }) => {
       .then((res) => res.json())
       .then(() => {
         axios
-          .delete(`http://localhost:5000/purchase/${id}`, {
+          .delete(`https://serene-bayou-83359.herokuapp.com/purchase/${id}`, {
             headers: {
               authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },

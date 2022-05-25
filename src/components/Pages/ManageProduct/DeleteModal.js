@@ -1,18 +1,21 @@
 import axios from 'axios';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const DeleteModal = ({ showModal, refetch }) => {
   const { _id, name } = showModal;
 
   const deleteProduct = (_id) => {
     axios
-      .delete(`http://localhost:5000/parts/${_id}`, {
+      .delete(`https://serene-bayou-83359.herokuapp.com/parts/${_id}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
       })
       .then(({ data }) => {
-        console.log(data);
+        if (data.deletedCount > 0) {
+          toast.success('Product deleted successfully');
+        }
         refetch();
       });
   };

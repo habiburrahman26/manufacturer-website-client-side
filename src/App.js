@@ -20,6 +20,7 @@ import RequireAdmin from './components/Shared/RequireAdmin';
 import Payment from './components/Pages/Payment/Payment';
 import MyProtfolio from './components/Pages/MyProtfolio/MyProtfolio';
 import NotFound from './components/Pages/NotFound.js/NotFound';
+import Blogs from './components/Pages/Blogs/Blogs';
 
 const client = new QueryClient();
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/protfolio" element={<MyProtfolio />} />
+          <Route path="/blogs" element={<Blogs />} />
           <Route
             path="/purchase/:id"
             element={

@@ -54,7 +54,7 @@ const PurchaseModal = ({
     };
 
     setIsLoading(true);
-    axios.put('http://localhost:5000/purchase', purchase).then(({ data }) => {
+    axios.put('https://serene-bayou-83359.herokuapp.com/purchase', purchase).then(({ data }) => {
       if (data.insertedId) {
         setIsLoading(false);
         toast.success(`You order ${name} place Successfully`);

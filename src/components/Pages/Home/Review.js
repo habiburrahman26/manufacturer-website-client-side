@@ -10,7 +10,7 @@ import ScreenSize from '../../../hooks/ScreenSize';
 
 export default function Review() {
   const { data, isLoading, isError, error } = useQuery('reviews', () =>
-    axios.get('http://localhost:5000/review')
+    axios.get('https://serene-bayou-83359.herokuapp.com/review')
   );
 
   const { minWidth } = ScreenSize();

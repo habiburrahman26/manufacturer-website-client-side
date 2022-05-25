@@ -15,7 +15,7 @@ const CheckoutForm = ({ id, buyer, buyerName, price }) => {
   useEffect(() => {
     axios
       .post(
-        'http://localhost:5000/create-payment-intent',
+        'https://serene-bayou-83359.herokuapp.com/create-payment-intent',
         { price },
         {
           headers: {
@@ -77,7 +77,7 @@ const CheckoutForm = ({ id, buyer, buyerName, price }) => {
       };
 
       axios
-        .patch(`http://localhost:5000/purchase/${id}`, payment, {
+        .patch(`https://serene-bayou-83359.herokuapp.com/purchase/${id}`, payment, {
           headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },

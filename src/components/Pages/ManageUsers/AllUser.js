@@ -7,7 +7,7 @@ import UserRow from './UserRow';
 const AllUser = () => {
   const { data, isLoading, isError, error, refetch } = useQuery(
     'all-user',
-    () => axios.get('http://localhost:5000/user')
+    () => axios.get('https://serene-bayou-83359.herokuapp.com/user')
   );
 
   if (isLoading) {

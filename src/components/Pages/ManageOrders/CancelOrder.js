@@ -7,7 +7,7 @@ const CancelOrder = ({ showModal, refetch }) => {
 
   const deleteOrder = (id) => {
     axios
-      .delete(`http://localhost:5000/purchase/${id}`, {
+      .delete(`https://serene-bayou-83359.herokuapp.com/purchase/${id}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },

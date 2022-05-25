@@ -40,7 +40,7 @@ const EditProfile = ({
   const updateProfile = async (userInfo) => {
     setUpdateProfileIsLoading(true);
     const { data } = await axios.put(
-      `http://localhost:5000/user/updateProfile/${email}`,
+      `https://serene-bayou-83359.herokuapp.com/user/updateProfile/${email}`,
       userInfo
     );
     if (data) {

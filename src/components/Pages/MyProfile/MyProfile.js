@@ -18,7 +18,7 @@ const MyProfile = () => {
     ['user-data', user],
     () => {
       if (user?.email) {
-        return axios.get(`http://localhost:5000/user/${user?.email}`);
+        return axios.get(`https://serene-bayou-83359.herokuapp.com/user/${user?.email}`);
       }
     }
   );
