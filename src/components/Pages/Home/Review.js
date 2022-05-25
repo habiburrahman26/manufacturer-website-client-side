@@ -1,65 +1,113 @@
-import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import React, { useEffect, useRef, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-const Review = () => {
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+import './style.css';
+
+// import required modules
+import { Pagination } from 'swiper';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import ScreenSize from '../../../hooks/ScreenSize';
+
+export default function Review() {
+  const { data, isLoading, isError, error } = useQuery('reviews', () =>
+    axios.get('http://localhost:5000/review')
+  );
+
+  const { minWidth } = ScreenSize();
+
+  if (isLoading) {
+    return (
+      <p className="text-lg font-semibold text-center mt-24">Loading...</p>
+    );
+  }
+
+  if (isError) {
+    return <p className="text-lg text-center">{error.message}</p>;
+  }
+
+  let slide = 3;
+
+  if (minWidth <= 1200) {
+    slide = 2;
+  }
+  if (minWidth <= 600) {
+    slide = 1;
+  }
+
+  const l = data?.data.reverse();
+  console.log(l);
+
   return (
-    <div>
-      {/* <Carousel autoPlay={true}>
-        <div>
-          <p>1</p>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Accusantium, pariatur! Excepturi odio quibusdam distinctio ea, ipsa
-            error asperiores quos deleniti ab voluptatum ad accusantium dolores
-            delectus assumenda nihil eligendi laudantium nam. Amet suscipit
-            repellat quis recusandae necessitatibus, soluta nisi quibusdam
-            nesciunt inventore dolorum facere corrupti cupiditate ea consequatur
-            blanditiis incidunt quasi maxime natus quaerat alias ut minus?
-            Dolore necessitatibus adipisci reiciendis, error facilis rerum cum
-            atque, non inventore quidem iure! Mollitia ab, ipsa delectus officia
-            architecto repudiandae. Rerum eum voluptas, cumque eius alias ut
-            error maxime odio modi delectus, eos nostrum sed quae? Labore minus
-            officiis eius rem placeat delectus?
-          </p>
-        </div>
-        <div>
-          <p>2</p>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Accusantium, pariatur! Excepturi odio quibusdam distinctio ea, ipsa
-            error asperiores quos deleniti ab voluptatum ad accusantium dolores
-            delectus assumenda nihil eligendi laudantium nam. Amet suscipit
-            repellat quis recusandae necessitatibus, soluta nisi quibusdam
-            nesciunt inventore dolorum facere corrupti cupiditate ea consequatur
-            blanditiis incidunt quasi maxime natus quaerat alias ut minus?
-            Dolore necessitatibus adipisci reiciendis, error facilis rerum cum
-            atque, non inventore quidem iure! Mollitia ab, ipsa delectus officia
-            architecto repudiandae. Rerum eum voluptas, cumque eius alias ut
-            error maxime odio modi delectus, eos nostrum sed quae? Labore minus
-            officiis eius rem placeat delectus?
-          </p>
-        </div>
-        <div>
-          <p>3</p>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Accusantium, pariatur! Excepturi odio quibusdam distinctio ea, ipsa
-            error asperiores quos deleniti ab voluptatum ad accusantium dolores
-            delectus assumenda nihil eligendi laudantium nam. Amet suscipit
-            repellat quis recusandae necessitatibus, soluta nisi quibusdam
-            nesciunt inventore dolorum facere corrupti cupiditate ea consequatur
-            blanditiis incidunt quasi maxime natus quaerat alias ut minus?
-            Dolore necessitatibus adipisci reiciendis, error facilis rerum cum
-            atque, non inventore quidem iure! Mollitia ab, ipsa delectus officia
-            architecto repudiandae. Rerum eum voluptas, cumque eius alias ut
-            error maxime odio modi delectus, eos nostrum sed quae? Labore minus
-            officiis eius rem placeat delectus?
-          </p>
-        </div>
-      </Carousel> */}
+    <div className="pb-24 ">
+      <h2 className="text-lg lg:text-3xl uppercase font-semibold text-primary text-center pb-6">
+        Happy Clients says
+      </h2>
+      <Swiper
+        slidesPerView={slide}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper w-[300px] md:w-[900px] lg:w-[1200px] mx-auto px-3"
+      >
+        {data?.data.map((r) => (
+          <SwiperSlide key={r._id} className="mb-14">
+            <div className="flex flex-col items-center shadow-lg rounded-lg p-6 text-base h-[300px]">
+              <div class="avatar mb-2">
+                <div class="w-16 rounded-full">
+                  <img src={r.img} alt="" />
+                </div>
+              </div>
+              <p className="font-semibold mb-2">{r.name}</p>
+              <div class="rating rating-sm mb-3">
+                <input
+                  type="radio"
+                  name="rating-2"
+                  class={`mask mask-star-2 ${
+                    r.rating >= 1 ? 'bg-orange-400' : 'bg-gray-400'
+                  }`}
+                />
+                <input
+                  type="radio"
+                  name="rating-2"
+                  class={`mask mask-star-2 ${
+                    r.rating >= 2 ? ' bg-orange-400' : 'bg-gray-400'
+                  }`}
+                />
+                <input
+                  type="radio"
+                  name="rating-2"
+                  class={`mask mask-star-2 ${
+                    r.rating >= 3 ? 'bg-orange-400' : 'bg-gray-400'
+                  }`}
+                />
+                <input
+                  type="radio"
+                  name="rating-2"
+                  class={`mask mask-star-2 ${
+                    r.rating >= 4 ? 'bg-orange-400' : 'bg-gray-400'
+                  }`}
+                />
+                <input
+                  type="radio"
+                  name="rating-2"
+                  class={`mask mask-star-2 ${
+                    r.rating >= 5 ? 'bg-orange-400' : 'bg-gray-400'
+                  }`}
+                />
+              </div>
+              <p>{r.text}</p>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
-};
-
-export default Review;
+}

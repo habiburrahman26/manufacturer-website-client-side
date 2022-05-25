@@ -7,7 +7,7 @@ import parts from '../../../assets/icon/motherboard-svgrepo-com.svg';
 
 const BusinessSummary = () => {
   return (
-    <div className="pb-20">
+    <div className="pb-24">
       <h2 className="text-lg lg:text-3xl uppercase font-semibold text-primary text-center pb-8">
         Million of business trusted us
       </h2>
@@ -37,7 +37,7 @@ const BusinessSummary = () => {
           <p>
             <img src={register} alt="" className="w-10 h-10" />
           </p>
-          <p className="text-2xl lg:text-4xl font-bold">300+</p>
+          <p className="text-2xl lg:text-4xl font-bold">100+</p>
           <p className="text-xl text-secondary text-semibold">New Register</p>
         </div>
         <div className="flex flex-col items-center gap-3">
