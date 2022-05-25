@@ -1,17 +1,21 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import LoadingSpinner from '../../Shared/LoadingSpinner';
+import CancelOrder from './CancelOrder';
 import OrderRow from './OrderRow';
 
 const ManageOrders = () => {
-  const { data, isLoading, isError, error } = useQuery('all-orders', () =>
-    axios.get('http://localhost:5000/order', {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      },
-    })
+  const { data, isLoading, isError, error, refetch } = useQuery(
+    'all-orders',
+    () =>
+      axios.get('http://localhost:5000/order', {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      })
   );
+  const [showModal, setShowModal] = useState(null);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -22,7 +26,7 @@ const ManageOrders = () => {
   }
 
   return (
-    <div className='max-h-[600px] mt-10 overflow-auto'>
+    <div className="max-h-[500px] lg:max-w-[1100px] mt-8 overflow-auto">
       <div className="overflow-auto max-w-sm px-3 md:max-w-3xl lg:max-w-6xl">
         <table className="table">
           <thead>
@@ -32,6 +36,9 @@ const ManageOrders = () => {
               <th>Buyer</th>
               <th>Quantity</th>
               <th>Total Price</th>
+              <th>Status</th>
+              <th>Payment</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -44,11 +51,16 @@ const ManageOrders = () => {
                 productName={p.productName}
                 quantity={p.quantity}
                 totalPrice={p.totalPrice}
+                status={p.status}
+                paid={p.paid}
+                refetch={refetch}
+                setShowModal={setShowModal}
               />
             ))}
           </tbody>
         </table>
       </div>
+      {showModal && <CancelOrder showModal={showModal} refetch={refetch} />}
     </div>
   );
 };

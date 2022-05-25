@@ -29,27 +29,41 @@ const MyOrders = () => {
     return <p className="text-center text-lg font-semibold">{error.message}</p>;
   }
 
+  console.log(data?.data.length);
+
   return (
-    <div>
-      <h1 className="text-2xl font-semibold text-center mb-6">My Orders</h1>
-      <div className="overflow-auto max-w-sm px-3 md:max-w-2xl lg:max-w-5xl">
-        <table className="table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Quantity</th>
-              <th>Unit Price</th>
-              <th>Total Price</th>
-              <th>Payment</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data?.data.map((p, i) => (
-              <OrdersRow key={p._id} sl={i + 1} {...p} />
-            ))}
-          </tbody>
-        </table>
+    <div className="max-h-[500px] lg:max-w-[1100px] mt-8 overflow-auto">
+      <div className="overflow-auto max-w-sm px-3 md:max-w-2xl lg:max-w-6xl">
+        {data?.data.length !== 0 && (
+          <table className="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th>Payment</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data?.data.map((p, i) => (
+                <OrdersRow
+                  key={p._id}
+                  sl={i + 1}
+                  {...p}
+                  setShowCancelModal={setShowCancelModal}
+                />
+              ))}
+            </tbody>
+          </table>
+        )}
+        {data?.data.length === 0 && (
+          <p className="text-lg lg:text-2xl font-bold text-center">
+            Opps! No Order yet
+          </p>
+        )}
         {showCancelModal && (
           <OrderCancelModal
             showCancelModal={showCancelModal}

@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 const OrdersRow = ({
   sl,
   _id,
-  name,
+  productName: name,
   quantity,
   unitPrice,
   totalPrice,
   paid,
   transactionId,
   setShowCancelModal,
+  status,
 }) => {
   return (
     <>
@@ -19,6 +20,7 @@ const OrdersRow = ({
         <td>{quantity}</td>
         <td>{unitPrice}</td>
         <td>{totalPrice}</td>
+        <td>{status || 'pending'}</td>
         <td>
           {totalPrice && !paid && (
             <>
@@ -37,7 +39,7 @@ const OrdersRow = ({
           {totalPrice && paid && (
             <div className="text-secondary">
               <p className="">paid </p>
-              <p className='text-x'>TransactionId:{transactionId}</p>
+              <p className="text-x">TransactionId:{transactionId}</p>
             </div>
           )}
         </td>

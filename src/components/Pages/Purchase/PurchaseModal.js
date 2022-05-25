@@ -50,6 +50,7 @@ const PurchaseModal = ({
       unitPrice: unitPrice,
       totalPrice: +quantity * +unitPrice,
       quantity: quantity,
+      status: 'pending',
     };
 
     setIsLoading(true);
