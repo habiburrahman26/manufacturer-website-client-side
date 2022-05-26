@@ -15,7 +15,6 @@ import gigabyte from '../../../assets/icon/gigabyte-technology-logo-2008.svg';
 import logitech from '../../../assets/icon/logitech-2-1.svg';
 import adata from '../../../assets/icon/adata-1.svg';
 import razer from '../../../assets/icon/razer-1.svg';
-import walton from '../../../assets/icon/wtc-3.svg';
 import pny from '../../../assets/icon/pny-technologies-logo.svg';
 import dell from '../../../assets/icon/dell-2.svg';
 import ScreenSize from '../../../hooks/ScreenSize';
@@ -78,9 +77,6 @@ const Brands = () => {
         </SwiperSlide>
         <SwiperSlide>
           <img className="w-16 h-16 lg:w-20 lg:h-20" src={razer} alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-16 h-16 lg:w-20 lg:h-20" src={walton} alt="" />
         </SwiperSlide>
         <SwiperSlide>
           <img className="w-16 h-16 lg:w-20 lg:h-20" src={msi} alt="" />
