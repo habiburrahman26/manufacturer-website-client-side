@@ -13,34 +13,16 @@ const CheckoutForm = ({ id, buyer, buyerName, price }) => {
 
   const [clientSecret, setClientSecret] = useState('');
 
-  // useEffect(() => {
-  //   AxiosPrivate.post('https://serene-bayou-83359.herokuapp.com/create-payment-intent', {
-  //     price,
-  //   }).then(({ data }) => {
-  //     if (data?.clientSecret) {
-  //       setClientSecret(data?.clientSecret);
-  //     }
-  //   });
-  // }, [price]);
-
   useEffect(() => {
-    fetch('https://serene-bayou-83359.herokuapp.com/create-payment-intent', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      },
-      body: JSON.stringify({ price }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.clientSecret) {
-          setClientSecret(data.clientSecret);
-        }
-      });
+    AxiosPrivate.post('https://serene-bayou-83359.herokuapp.com/create-payment-intent', {
+      price,
+    }).then(({ data }) => {
+      if (data?.clientSecret) {
+        setClientSecret(data?.clientSecret);
+      }
+    });
   }, [price]);
 
-  console.log(clientSecret);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
