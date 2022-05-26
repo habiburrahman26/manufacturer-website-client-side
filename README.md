@@ -6,6 +6,7 @@ click here to go live client site https://computer-store-850ae.web.app/
 
 
 - This site design for computer-store this is a computer parts selling websites 
+* This site I integrate Payment with stripe
 - This site has a home page
 - Inside home page I add banner section, Parts collection, brand, our services, client review and footer
 - Blogs page I ans my question
