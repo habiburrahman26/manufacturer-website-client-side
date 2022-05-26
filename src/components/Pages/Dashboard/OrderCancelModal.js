@@ -1,4 +1,4 @@
-import axios from 'axios';
+import AxiosPrivate from '../../../API/AxiosPrivate';
 import React from 'react';
 import { toast } from 'react-toastify';
 
@@ -6,26 +6,16 @@ const OrderCancelModal = ({ showCancelModal, refetch }) => {
   const { _id, name } = showCancelModal;
 
   const deleteOrder = (id) => {
-    fetch(`http://localhost:5000/order/purchase/${id}`, {
-      method: 'PUT',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      },
-    })
-      .then((res) => res.json())
+    AxiosPrivate.put(`http://localhost:5000/order/purchase/${id}`)
       .then(() => {
-        axios
-          .delete(`http://localhost:5000/purchase/${id}`, {
-            headers: {
-              authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-            },
-          })
-          .then(({ data }) => {
+        AxiosPrivate.delete(`http://localhost:5000/purchase/${id}`).then(
+          ({ data }) => {
             if (data.deletedCount > 0) {
               toast.success(`Your order ${name} deleted successfully`);
             }
             refetch();
-          });
+          }
+        );
       });
   };
 

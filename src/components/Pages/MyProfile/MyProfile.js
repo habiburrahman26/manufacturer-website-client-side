@@ -11,6 +11,7 @@ import phone from '../../../assets/icon/phone-svgrepo-com.svg';
 import linkedin from '../../../assets/icon/linkedin-svgrepo-com.svg';
 import EditProfile from './EditProfile';
 import PageTitle from '../../Shared/PageTitle';
+import AxiosPrivate from '../../../API/AxiosPrivate';
 
 const MyProfile = () => {
   const [user, loading] = useAuthState(auth);
@@ -19,7 +20,7 @@ const MyProfile = () => {
     ['user-data', user],
     () => {
       if (user?.email) {
-        return axios.get(`http://localhost:5000/user/${user?.email}`);
+        return AxiosPrivate.get(`http://localhost:5000/user/${user?.email}`);
       }
     }
   );
