@@ -1,4 +1,4 @@
-# E-store
+# Computer-store
 
 [live site link](https://computer-store-850ae.web.app/)
 
