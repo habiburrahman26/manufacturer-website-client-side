@@ -8,7 +8,7 @@ const useAdmin = (user) => {
   useEffect(() => {
     const email = user?.email;
     if (email) {
-      AxiosPrivate.get(`http://localhost:5000/admin/${email}`).then(
+      AxiosPrivate.get(`https://serene-bayou-83359.herokuapp.com/admin/${email}`).then(
         ({ data }) => {
           setAdmin(data.admin);
           setAdminLoading(false);

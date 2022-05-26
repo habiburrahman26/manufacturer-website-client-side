@@ -7,7 +7,7 @@ const CancelOrder = ({ showModal, refetch }) => {
 
   const deleteOrder = (id) => {
     AxiosPrivate
-      .delete(`http://localhost:5000/purchase/${id}`)
+      .delete(`https://serene-bayou-83359.herokuapp.com/purchase/${id}`)
       .then(({ data }) => {
         if (data.deletedCount > 0) {
           toast.success(`Order deleted successfully`);

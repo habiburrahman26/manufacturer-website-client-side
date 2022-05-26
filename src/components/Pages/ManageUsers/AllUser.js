@@ -8,7 +8,7 @@ import UserRow from './UserRow';
 const AllUser = () => {
   const { data, isLoading, isError, error, refetch } = useQuery(
     'all-user',
-    () => AxiosPrivate.get('http://localhost:5000/user')
+    () => AxiosPrivate.get('https://serene-bayou-83359.herokuapp.com/user')
   );
 
   const [searchByEmail, setSearchByEmail] = useState('');

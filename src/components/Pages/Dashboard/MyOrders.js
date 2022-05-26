@@ -16,7 +16,7 @@ const MyOrders = () => {
     () => {
       const email = user?.email;
       if (email) {
-        return AxiosPrivate.get(`http://localhost:5000/purchase?email=${email}`);
+        return AxiosPrivate.get(`https://serene-bayou-83359.herokuapp.com/purchase?email=${email}`);
       }
     }
   );

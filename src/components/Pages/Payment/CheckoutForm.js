@@ -14,7 +14,7 @@ const CheckoutForm = ({ id, buyer, buyerName, price }) => {
   const [clientSecret, setClientSecret] = useState('');
 
   useEffect(() => {
-    AxiosPrivate.post('http://localhost:5000/create-payment-intent', {
+    AxiosPrivate.post('https://serene-bayou-83359.herokuapp.com/create-payment-intent', {
       price,
     }).then(({ data }) => {
       if (data?.clientSecret) {
@@ -70,7 +70,7 @@ const CheckoutForm = ({ id, buyer, buyerName, price }) => {
       };
 
       AxiosPrivate.patch(
-        `http://localhost:5000/purchase/${id}`,
+        `https://serene-bayou-83359.herokuapp.com/purchase/${id}`,
         payment
       ).then(({ data }) => {
         setProcessing(false);

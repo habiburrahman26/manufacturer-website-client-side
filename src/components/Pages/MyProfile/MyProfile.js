@@ -12,15 +12,19 @@ import linkedin from '../../../assets/icon/linkedin-svgrepo-com.svg';
 import EditProfile from './EditProfile';
 import PageTitle from '../../Shared/PageTitle';
 import AxiosPrivate from '../../../API/AxiosPrivate';
+import UploadPhotoModal from './UploadPhotoModal';
 
 const MyProfile = () => {
   const [user, loading] = useAuthState(auth);
   const [showEdit, setShowEdit] = useState(false);
+  const [showUploadPhoto, setUploadPhoto] = useState(false);
   const { data, isLoading, isError, error, refetch } = useQuery(
     ['user-data', user],
     () => {
       if (user?.email) {
-        return AxiosPrivate.get(`http://localhost:5000/user/${user?.email}`);
+        return AxiosPrivate.get(
+          `https://serene-bayou-83359.herokuapp.com/user/${user?.email}`
+        );
       }
     }
   );
@@ -37,13 +41,14 @@ const MyProfile = () => {
     setShowEdit((prevState) => !prevState);
   };
 
+
   return (
     <>
       <PageTitle title="My Profile" />
       <div className="flex flex-col items-center">
         <div className="avatar mb-5">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={user?.photoURL || profile} alt="" />
+            <img src={user?.photoURL ||data?.data.img ||profile} alt="" />
           </div>
         </div>
         <div className="text-center max-w-2xl">
@@ -88,6 +93,13 @@ const MyProfile = () => {
               Edit Profile
             </button>
           )}
+          <label
+            htmlFor="upload-photo-modal"
+            className="btn btn-secondary btn-outline ml-2 btn-sm modal-button"
+            onClick={() => setUploadPhoto(true)}
+          >
+            Upload photo
+          </label>
         </div>
         {showEdit && (
           <EditProfile
@@ -100,6 +112,13 @@ const MyProfile = () => {
           />
         )}
       </div>
+      {showUploadPhoto && (
+        <UploadPhotoModal
+          setUploadPhoto={setUploadPhoto}
+          refetch={refetch}
+          _id={data?.data._id}
+        />
+      )}
     </>
   );
 };

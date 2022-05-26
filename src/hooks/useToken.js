@@ -11,8 +11,9 @@ const useToken = (user) => {
     if (email) {
       setIsLoading(true);
       axios
-        .put(`http://localhost:5000/user/${email}`, {
+        .put(`https://serene-bayou-83359.herokuapp.com/user/${email}`, {
           email: email,
+          name: user?.user?.displayName,
         })
         .then(({ data }) => {
           localStorage.setItem('accessToken', data.accessToken);

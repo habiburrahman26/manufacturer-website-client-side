@@ -9,7 +9,7 @@ import OrderRow from './OrderRow';
 const ManageOrders = () => {
   const { data, isLoading, isError, error, refetch } = useQuery(
     'all-orders',
-    () => AxiosPrivate.get('http://localhost:5000/order')
+    () => AxiosPrivate.get('https://serene-bayou-83359.herokuapp.com/order')
   );
   const [showModal, setShowModal] = useState(null);
 

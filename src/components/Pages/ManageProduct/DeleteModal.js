@@ -7,7 +7,7 @@ const DeleteModal = ({ showModal, refetch }) => {
 
   const deleteProduct = (_id) => {
     AxiosPrivate.delete(
-      `http://localhost:5000/parts/${_id}`
+      `https://serene-bayou-83359.herokuapp.com/parts/${_id}`
     ).then(({ data }) => {
       if (data.deletedCount > 0) {
         toast.success('Product deleted successfully');

@@ -37,7 +37,7 @@ const AddProduct = () => {
             image: result.url,
           };
 
-          AxiosPrivate.post('http://localhost:5000/parts', parts).then(
+          AxiosPrivate.post('https://serene-bayou-83359.herokuapp.com/parts', parts).then(
             ({ data }) => {
               if (data.insertedId) {
                 toast.success('Parts added successfully');

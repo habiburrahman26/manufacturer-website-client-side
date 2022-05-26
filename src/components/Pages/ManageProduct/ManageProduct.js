@@ -9,7 +9,7 @@ import ProductRow from './ProductRow';
 const ManageProduct = () => {
   const { data, isLoading, isError, error, refetch } = useQuery(
     'all-parts',
-    () => AxiosPrivate.get('http://localhost:5000/parts')
+    () => AxiosPrivate.get('https://serene-bayou-83359.herokuapp.com/parts')
   );
   const [showModal, setShowModal] = useState(null);
   const [search, setSearch] = useState('');

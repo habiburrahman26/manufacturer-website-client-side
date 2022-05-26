@@ -5,7 +5,7 @@ import PartsList from './PartsList';
 
 const Parts = () => {
   const { data, isLoading } = useQuery('parts', () =>
-    axios.get('http://localhost:5000/parts')
+    axios.get('https://serene-bayou-83359.herokuapp.com/parts')
   );
 
   if (isLoading) {
