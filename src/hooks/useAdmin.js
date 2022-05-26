@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import AxiosPrivate from '../API/AxiosPrivate';
 
 const useAdmin = (user) => {
   const [admin, setAdmin] = useState(false);
@@ -7,12 +8,12 @@ const useAdmin = (user) => {
   useEffect(() => {
     const email = user?.email;
     if (email) {
-      fetch(`https://serene-bayou-83359.herokuapp.com/admin/${email}`)
-        .then((res) => res.json())
-        .then((data) => {
+      AxiosPrivate.get(`http://localhost:5000/admin/${email}`).then(
+        ({ data }) => {
           setAdmin(data.admin);
           setAdminLoading(false);
-        });
+        }
+      );
     }
   }, [user]);
 
