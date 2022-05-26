@@ -6,7 +6,7 @@ const OrderCancelModal = ({ showCancelModal, refetch }) => {
   const { _id, name } = showCancelModal;
 
   const deleteOrder = (id) => {
-    fetch(`https://serene-bayou-83359.herokuapp.com/order/purchase/${id}`, {
+    fetch(`http://localhost:5000/order/purchase/${id}`, {
       method: 'PUT',
       headers: {
         authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -15,7 +15,7 @@ const OrderCancelModal = ({ showCancelModal, refetch }) => {
       .then((res) => res.json())
       .then(() => {
         axios
-          .delete(`https://serene-bayou-83359.herokuapp.com/purchase/${id}`, {
+          .delete(`http://localhost:5000/purchase/${id}`, {
             headers: {
               authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
@@ -39,13 +39,13 @@ const OrderCancelModal = ({ showCancelModal, refetch }) => {
           </p>
           <div className="modal-action">
             <label
-              for="cancel-order-modal"
+              htmlFor="cancel-order-modal"
               className="btn btn-secondary btn-sm"
               onClick={() => deleteOrder(_id)}
             >
               Ok
             </label>
-            <label for="cancel-order-modal" className="btn btn-sm">
+            <label htmlFor="cancel-order-modal" className="btn btn-sm">
               Cancel
             </label>
           </div>

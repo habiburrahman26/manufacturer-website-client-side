@@ -22,7 +22,7 @@ const AddReview = () => {
     };
 
     axios
-      .post('https://serene-bayou-83359.herokuapp.com/review', review, {
+      .post('http://localhost:5000/review', review, {
         headers: {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -41,7 +41,7 @@ const AddReview = () => {
         <input
           type="text"
           placeholder="name"
-          class="input input-bordered  w-full max-w-xs"
+          className="input input-bordered  w-full max-w-xs"
           value={user?.displayName}
           disabled
           readOnly
@@ -53,11 +53,11 @@ const AddReview = () => {
           max="5"
           placeholder="Rating.."
           name="rating"
-          class="input input-bordered  w-full max-w-xs"
+          className="input input-bordered  w-full max-w-xs"
           required
         />
         <textarea
-          class="textarea textarea-bordered w-full max-w-xs"
+          className="textarea textarea-bordered w-full max-w-xs"
           placeholder="Text.."
           name="text"
         ></textarea>

@@ -13,7 +13,7 @@ const Purchase = () => {
   const [user, loading] = useAuthState(auth);
 
   const { data, isLoading, isError, error,refetch } = useQuery(['part-by-id', id], () =>
-    axios.get(`https://serene-bayou-83359.herokuapp.com/parts/${id}`)
+    axios.get(`http://localhost:5000/parts/${id}`)
   );
 
   if (isLoading || loading) {

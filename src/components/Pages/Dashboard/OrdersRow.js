@@ -28,7 +28,7 @@ const OrdersRow = ({
                 <button className="btn btn-xs btn-secondary">Pay</button>
               </Link>
               <label
-                for="cancel-order-modal"
+                htmlFor="cancel-order-modal"
                 className="btn btn-xs btn-error ml-2 modal-button"
                 onClick={() => setShowCancelModal({ _id, name })}
               >

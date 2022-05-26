@@ -11,7 +11,7 @@ const useToken = (user) => {
     if (email) {
       setIsLoading(true);
       axios
-        .put(`https://serene-bayou-83359.herokuapp.com/user/${email}`, {
+        .put(`http://localhost:5000/user/${email}`, {
           email: email,
         })
         .then(({ data }) => {

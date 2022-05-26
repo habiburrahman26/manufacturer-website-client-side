@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import AxiosPrivate from '../../../API/AxiosPrivate';
 import LoadingSpinner from '../../Shared/LoadingSpinner';
+import PageTitle from '../../Shared/PageTitle';
 import UserRow from './UserRow';
 
 const AllUser = () => {
   const { data, isLoading, isError, error, refetch } = useQuery(
     'all-user',
-    () => AxiosPrivate.get('https://serene-bayou-83359.herokuapp.com/user')
+    () => AxiosPrivate.get('http://localhost:5000/user')
   );
 
   const [searchByEmail, setSearchByEmail] = useState('');
@@ -26,11 +27,12 @@ const AllUser = () => {
 
   return (
     <div>
+      <PageTitle title="Users" />
       <div className="text-center">
         <input
           type="text"
           placeholder="Search by Email..."
-          class="input input-bordered w-full max-w-xs lg:max-w-md mb-4"
+          className="input input-bordered w-full max-w-xs lg:max-w-md mb-4"
           onChange={(e) => setSearchByEmail(e.target.value)}
         />
       </div>

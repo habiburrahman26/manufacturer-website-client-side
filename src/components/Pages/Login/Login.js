@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 import LoadingSpinner from '../../Shared/LoadingSpinner';
 import SocialMediaLogin from './SocialMediaLogin';
 import useToken from '../../../hooks/useToken';
+import PageTitle from '../../Shared/PageTitle';
 
 const Login = () => {
   const {
@@ -38,6 +39,8 @@ const Login = () => {
   };
 
   return (
+   <>
+   <PageTitle title="Login"/>
     <div className="max-w-xs lg:max-w-md mx-auto mt-10 shadow-lg rounded-xl p-6">
       <form className="" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-xl lg:text-3xl mb-6 text-center">Login</h2>
@@ -114,6 +117,7 @@ const Login = () => {
         <SocialMediaLogin />
       </form>
     </div>
+   </>
   );
 };
 

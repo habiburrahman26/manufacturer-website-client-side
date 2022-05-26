@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import AxiosPrivate from '../../../API/AxiosPrivate';
 
 const CheckoutForm = ({ id, buyer, buyerName, price }) => {
   const stripe = useStripe();
@@ -13,21 +14,13 @@ const CheckoutForm = ({ id, buyer, buyerName, price }) => {
   const [clientSecret, setClientSecret] = useState('');
 
   useEffect(() => {
-    axios
-      .post(
-        'https://serene-bayou-83359.herokuapp.com/create-payment-intent',
-        { price },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-          },
-        }
-      )
-      .then(({ data }) => {
-        if (data?.clientSecret) {
-          setClientSecret(data?.clientSecret);
-        }
-      });
+    AxiosPrivate.post('http://localhost:5000/create-payment-intent', {
+      price,
+    }).then(({ data }) => {
+      if (data?.clientSecret) {
+        setClientSecret(data?.clientSecret);
+      }
+    });
   }, [price]);
 
   const handleSubmit = async (e) => {
@@ -76,16 +69,12 @@ const CheckoutForm = ({ id, buyer, buyerName, price }) => {
         transactionId: paymentIntent.id,
       };
 
-      axios
-        .patch(`https://serene-bayou-83359.herokuapp.com/purchase/${id}`, payment, {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-          },
-        })
-        .then(({ data }) => {
-          setProcessing(false);
-          console.log(data);
-        });
+      AxiosPrivate.patch(
+        `http://localhost:5000/purchase/${id}`,
+        payment
+      ).then(({ data }) => {
+        setProcessing(false);
+      });
     }
   };
 

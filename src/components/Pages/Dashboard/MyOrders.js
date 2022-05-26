@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
@@ -6,6 +5,7 @@ import auth from '../../../firebase.init';
 import LoadingSpinner from '../../Shared/LoadingSpinner';
 import OrderCancelModal from './OrderCancelModal';
 import OrdersRow from './OrdersRow';
+import AxiosPrivate from '../../../API/AxiosPrivate';
 
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
@@ -16,7 +16,7 @@ const MyOrders = () => {
     () => {
       const email = user?.email;
       if (email) {
-        return axios.get(`https://serene-bayou-83359.herokuapp.com/purchase?email=${email}`);
+        return AxiosPrivate.get(`http://localhost:5000/purchase?email=${email}`);
       }
     }
   );
@@ -28,8 +28,6 @@ const MyOrders = () => {
   if (isError) {
     return <p className="text-center text-lg font-semibold">{error.message}</p>;
   }
-
-  console.log(data?.data.length);
 
   return (
     <div className="max-h-[500px] lg:max-w-[1100px] mt-8 overflow-auto">

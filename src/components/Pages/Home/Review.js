@@ -10,7 +10,7 @@ import ScreenSize from '../../../hooks/ScreenSize';
 
 export default function Review() {
   const { data, isLoading, isError, error } = useQuery('reviews', () =>
-    axios.get('https://serene-bayou-83359.herokuapp.com/review')
+    axios.get('http://localhost:5000/review')
   );
 
   const { minWidth } = ScreenSize();
@@ -61,45 +61,45 @@ export default function Review() {
         {reverseReview.map((r) => (
           <SwiperSlide key={r._id} className="mb-14">
             <div className="flex flex-col items-center shadow-lg rounded-lg p-6 text-base h-[320px] lg:h-[280px]">
-              <div class="avatar mb-2">
-                <div class="w-16 rounded-full">
+              <div className="avatar mb-2">
+                <div className="w-16 rounded-full">
                   <img src={r.img || user} alt="" />
                 </div>
               </div>
               <p className="font-semibold mb-2">{r.name}</p>
-              <div class="rating rating-sm mb-3">
+              <div className="rating rating-sm mb-3">
                 <input
                   type="radio"
                   name="rating-2"
-                  class={`mask mask-star-2 ${
+                  className={`mask mask-star-2 ${
                     r.rating >= 1 ? 'bg-orange-400' : 'bg-gray-400'
                   }`}
                 />
                 <input
                   type="radio"
                   name="rating-2"
-                  class={`mask mask-star-2 ${
+                  className={`mask mask-star-2 ${
                     r.rating >= 2 ? ' bg-orange-400' : 'bg-gray-400'
                   }`}
                 />
                 <input
                   type="radio"
                   name="rating-2"
-                  class={`mask mask-star-2 ${
+                  className={`mask mask-star-2 ${
                     r.rating >= 3 ? 'bg-orange-400' : 'bg-gray-400'
                   }`}
                 />
                 <input
                   type="radio"
                   name="rating-2"
-                  class={`mask mask-star-2 ${
+                  className={`mask mask-star-2 ${
                     r.rating >= 4 ? 'bg-orange-400' : 'bg-gray-400'
                   }`}
                 />
                 <input
                   type="radio"
                   name="rating-2"
-                  class={`mask mask-star-2 ${
+                  className={`mask mask-star-2 ${
                     r.rating >= 5 ? 'bg-orange-400' : 'bg-gray-400'
                   }`}
                 />

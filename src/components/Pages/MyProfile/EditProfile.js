@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import AxiosPrivate from '../../../API/AxiosPrivate';
 
 const EditProfile = ({
   email,
@@ -39,8 +39,8 @@ const EditProfile = ({
 
   const updateProfile = async (userInfo) => {
     setUpdateProfileIsLoading(true);
-    const { data } = await axios.put(
-      `https://serene-bayou-83359.herokuapp.com/user/updateProfile/${email}`,
+    const { data } = await AxiosPrivate.put(
+      `http://localhost:5000/user/updateProfile/${email}`,
       userInfo
     );
     if (data) {

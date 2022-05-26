@@ -7,7 +7,7 @@ const CancelOrder = ({ showModal, refetch }) => {
 
   const deleteOrder = (id) => {
     AxiosPrivate
-      .delete(`https://serene-bayou-83359.herokuapp.com/purchase/${id}`)
+      .delete(`http://localhost:5000/purchase/${id}`)
       .then(({ data }) => {
         if (data.deletedCount > 0) {
           toast.success(`Order deleted successfully`);
@@ -26,13 +26,13 @@ const CancelOrder = ({ showModal, refetch }) => {
           </p>
           <div className="modal-action">
             <label
-              for="delete-order"
+              htmlFor="delete-order"
               className="btn btn-secondary btn-sm"
               onClick={() => deleteOrder(_id)}
             >
               Ok
             </label>
-            <label for="delete-order" className="btn btn-sm">
+            <label htmlFor="delete-order" className="btn btn-sm">
               Cancel
             </label>
           </div>

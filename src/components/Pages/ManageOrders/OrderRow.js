@@ -11,7 +11,7 @@ const OrderRow = ({
   refetch,
 }) => {
   const changeStatus = (id) => {
-    fetch(`https://serene-bayou-83359.herokuapp.com/purchase/status/${id}`, {
+    fetch(`http://localhost:5000/purchase/status/${id}`, {
       method: 'PUT',
       headers: {
         authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -33,10 +33,10 @@ const OrderRow = ({
       <td>{status || 'pending'}</td>
       <td>
         {!paid && (
-          <div class="badge badge-primary">unpaid</div>
+          <div className="badge badge-primary">unpaid</div>
         )}
         {paid && (
-          <div class="badge badge-success">paid</div>
+          <div className="badge badge-success">paid</div>
         )}
       </td>
       <td>
@@ -50,7 +50,7 @@ const OrderRow = ({
         )}
         {!paid && (
           <label
-            for="delete-order"
+            htmlFor="delete-order"
             className="btn btn-error btn-xs modal-button"
             onClick={() => setShowModal({ _id })}
           >
