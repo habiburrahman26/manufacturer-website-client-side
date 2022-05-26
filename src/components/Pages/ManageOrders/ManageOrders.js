@@ -60,7 +60,6 @@ const ManageOrders = () => {
         </div>
         {showModal && <CancelOrder showModal={showModal} refetch={refetch} />}
       </div>
-      );
     </>
   );
 };

@@ -6,22 +6,41 @@ import AxiosPrivate from '../../../API/AxiosPrivate';
 const CheckoutForm = ({ id, buyer, buyerName, price }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [cardError, setCardErrro] = useState('');
+  const [cardError, setCardError] = useState('');
   const [success, setSuccess] = useState('');
   const [transctionId, setTransctionId] = useState('');
   const [processing, setProcessing] = useState(false);
 
   const [clientSecret, setClientSecret] = useState('');
 
+  // useEffect(() => {
+  //   AxiosPrivate.post('https://serene-bayou-83359.herokuapp.com/create-payment-intent', {
+  //     price,
+  //   }).then(({ data }) => {
+  //     if (data?.clientSecret) {
+  //       setClientSecret(data?.clientSecret);
+  //     }
+  //   });
+  // }, [price]);
+
   useEffect(() => {
-    AxiosPrivate.post('https://serene-bayou-83359.herokuapp.com/create-payment-intent', {
-      price,
-    }).then(({ data }) => {
-      if (data?.clientSecret) {
-        setClientSecret(data?.clientSecret);
-      }
-    });
+    fetch('https://serene-bayou-83359.herokuapp.com/create-payment-intent', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+      body: JSON.stringify({ price }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.clientSecret) {
+          setClientSecret(data.clientSecret);
+        }
+      });
   }, [price]);
+
+  console.log(clientSecret);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,14 +55,11 @@ const CheckoutForm = ({ id, buyer, buyerName, price }) => {
       card,
     });
 
-    if (error) {
-      setCardErrro(error.message);
-      setSuccess('');
-    } else {
-      setCardErrro('');
-    }
-
+    setCardError(error?.message || '');
+    setSuccess('');
     setProcessing(true);
+    
+    // confirm card payment
     const { paymentIntent, error: intentError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -56,25 +72,24 @@ const CheckoutForm = ({ id, buyer, buyerName, price }) => {
       });
 
     if (intentError) {
-      setCardErrro(intentError.message);
+      setCardError(intentError.message);
       setSuccess('');
       setProcessing(false);
     } else {
       setSuccess('Congrats! Your Payment is completed');
       setTransctionId(paymentIntent.id);
-      setCardErrro('');
+      setCardError('');
 
       const payment = {
         purchaseId: id,
         transactionId: paymentIntent.id,
       };
 
-      AxiosPrivate.patch(
-        `https://serene-bayou-83359.herokuapp.com/purchase/${id}`,
-        payment
-      ).then(({ data }) => {
-        setProcessing(false);
-      });
+      AxiosPrivate.patch(`https://serene-bayou-83359.herokuapp.com/purchase/${id}`, payment).then(
+        ({ data }) => {
+          setProcessing(false);
+        }
+      );
     }
   };
 
