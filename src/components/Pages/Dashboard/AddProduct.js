@@ -1,13 +1,14 @@
-import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import AxiosPrivate from '../../../API/AxiosPrivate';
 
 const img_key = '3ad55ab9434d8720265796ab760a0977';
 
 const AddProduct = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -18,6 +19,7 @@ const AddProduct = () => {
     const formData = new FormData();
     formData.append('image', image);
 
+    setIsLoading(true);
     fetch(`https://api.imgbb.com/1/upload?key=${img_key}`, {
       method: 'POST',
       body: formData,
@@ -34,19 +36,18 @@ const AddProduct = () => {
             image: result.url,
           };
 
-          axios
-            .post('https://serene-bayou-83359.herokuapp.com/parts', parts, {
-              headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-              },
-            })
-            .then(({ data }) => {
-              if (data.insertedId) {
-                toast.success('Parts added successfully');
-                navigate('/dashboard/manageProducts', { replace: true });
-              }
-            });
+          AxiosPrivate.post(
+            'https://serene-bayou-83359.herokuapp.com/parts',
+            parts
+          ).then(({ data }) => {
+            if (data.insertedId) {
+              toast.success('Parts added successfully');
+              navigate('/dashboard/manageProducts', { replace: true });
+            }
+          });
         }
+
+        setIsLoading(false);
       });
   };
 
@@ -85,7 +86,7 @@ const AddProduct = () => {
           </label>
           <input
             className="input input-bordered input-sm w-full max-w-sm"
-            type="text"
+            type="number"
             {...register('unitPrice', {
               required: {
                 value: true,
@@ -192,7 +193,7 @@ const AddProduct = () => {
           </label>
         </div>
         <button className="btn bg-accent text-white mt-4 w-full max-w-sm">
-          Add Product
+          {isLoading ? 'Adding...' : 'Add Product'}
         </button>
       </form>
     </div>

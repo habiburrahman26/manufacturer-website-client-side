@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blogs = () => {
   return (
-    <div className="px-3 lg:px-32 mt-10">
+    <div className="px-3 lg:px-32 mt-10 pb-20">
       <div className="border-2 mt-4 rounded-md p-4">
         <h3 className="text-base lg:text-lg font-semibold">
           How will you improve the performance of a React Application?

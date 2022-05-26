@@ -1,13 +1,13 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import AxiosPrivate from '../../../API/AxiosPrivate';
 import LoadingSpinner from '../../Shared/LoadingSpinner';
 import UserRow from './UserRow';
 
 const AllUser = () => {
   const { data, isLoading, isError, error, refetch } = useQuery(
     'all-user',
-    () => axios.get('https://serene-bayou-83359.herokuapp.com/user')
+    () => AxiosPrivate.get('https://serene-bayou-83359.herokuapp.com/user')
   );
 
   const [searchByEmail, setSearchByEmail] = useState('');

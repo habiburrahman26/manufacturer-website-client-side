@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import AxiosPrivate from '../../../API/AxiosPrivate';
 import LoadingSpinner from '../../Shared/LoadingSpinner';
 import DeleteModal from './DeleteModal';
 import ProductRow from './ProductRow';
@@ -8,12 +8,7 @@ import ProductRow from './ProductRow';
 const ManageProduct = () => {
   const { data, isLoading, isError, error, refetch } = useQuery(
     'all-parts',
-    () =>
-      axios.get('https://serene-bayou-83359.herokuapp.com/parts', {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      })
+    () => AxiosPrivate.get('https://serene-bayou-83359.herokuapp.com/parts')
   );
   const [showModal, setShowModal] = useState(null);
   const [search, setSearch] = useState('');

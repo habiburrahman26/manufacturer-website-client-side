@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import AxiosPrivate from '../../../API/AxiosPrivate';
 import LoadingSpinner from '../../Shared/LoadingSpinner';
 import CancelOrder from './CancelOrder';
 import OrderRow from './OrderRow';
@@ -9,11 +9,7 @@ const ManageOrders = () => {
   const { data, isLoading, isError, error, refetch } = useQuery(
     'all-orders',
     () =>
-      axios.get('https://serene-bayou-83359.herokuapp.com/order', {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      })
+      AxiosPrivate.get('https://serene-bayou-83359.herokuapp.com/order')
   );
   const [showModal, setShowModal] = useState(null);
 

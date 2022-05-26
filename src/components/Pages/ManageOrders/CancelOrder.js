@@ -1,17 +1,13 @@
-import axios from 'axios';
 import React from 'react';
 import { toast } from 'react-toastify';
+import AxiosPrivate from '../../../API/AxiosPrivate';
 
 const CancelOrder = ({ showModal, refetch }) => {
   const { _id } = showModal;
 
   const deleteOrder = (id) => {
-    axios
-      .delete(`https://serene-bayou-83359.herokuapp.com/purchase/${id}`, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      })
+    AxiosPrivate
+      .delete(`https://serene-bayou-83359.herokuapp.com/purchase/${id}`)
       .then(({ data }) => {
         if (data.deletedCount > 0) {
           toast.success(`Order deleted successfully`);
