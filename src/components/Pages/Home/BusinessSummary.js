@@ -8,7 +8,7 @@ import parts from '../../../assets/icon/motherboard-svgrepo-com.svg';
 const BusinessSummary = () => {
   return (
     <div className="py-24">
-      <h2 className="text-lg lg:text-2xl uppercase font-semibold text-primary text-center pb-8">
+      <h2 className="text-xl lg:text-2xl uppercase font-semibold text-primary text-center pb-8">
         Thousand of business trusted us
       </h2>
       <div className="flex flex-col md:flex-row gap-6 justify-between max-w-xs md:max-w-2xl lg:max-w-5xl mx-auto border-2 px-8 py-6 rounded-lg">

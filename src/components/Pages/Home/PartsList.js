@@ -17,7 +17,7 @@ const PartsList = ({ part }) => {
         <img src={image} alt="parts" className='w-[150px]'/>
       </figure>
       <div className="card-body">
-        <h2 className="card-title text-lg">{name}</h2>
+        <h2 className="card-title text-base lg:text-lg">{name}</h2>
         <p className="text-base">
           <span>Minimum Order Quantity:</span> {minimumOrderQuantity}
         </p>

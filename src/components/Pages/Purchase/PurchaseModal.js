@@ -54,14 +54,16 @@ const PurchaseModal = ({
     };
 
     setIsLoading(true);
-    axios.put('https://serene-bayou-83359.herokuapp.com/purchase', purchase).then(({ data }) => {
-      if (data.insertedId) {
+    axios
+      .put('https://serene-bayou-83359.herokuapp.com/purchase', purchase)
+      .then(({ data }) => {
+        if (data.insertedId) {
+          toast.success(`You order ${name} place Successfully`);
+          setShowModal('');
+          refetch();
+        }
         setIsLoading(false);
-        toast.success(`You order ${name} place Successfully`);
-        setShowModal('');
-        refetch();
-      }
-    });
+      });
   };
 
   return (

@@ -27,7 +27,7 @@ const SocialMediaLogin = ({ setSocialIsLoading }) => {
     }
   }, [token, from, navigate]);
 
-  if (gLoading || fLoading) {
+  if (gLoading || fLoading ) {
     return <LoadingSpinner />;
   }
 

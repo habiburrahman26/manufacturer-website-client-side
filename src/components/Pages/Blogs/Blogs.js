@@ -53,7 +53,8 @@ const Blogs = () => {
             //search input text <br />
             const [search, setSearch] = useState(null); <br />
             const searchProducts = products.filter((p) =>
-            p.name.toLowerCase().includes(search.toLowerCase()) );
+            p.name.toLowerCase()
+            .includes(search.toLowerCase()) );
           </p>
         </div>
         <div className="border-2 mt-4 rounded-md p-4">

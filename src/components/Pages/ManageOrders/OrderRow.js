@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 const OrderRow = ({
   sl,
   _id,
@@ -10,7 +12,10 @@ const OrderRow = ({
   setShowModal,
   refetch,
 }) => {
+  const [loading, setLoading] = useState(false);
+
   const changeStatus = (id) => {
+    setLoading(true);
     fetch(`https://serene-bayou-83359.herokuapp.com/purchase/status/${id}`, {
       method: 'PUT',
       headers: {
@@ -19,6 +24,7 @@ const OrderRow = ({
     })
       .then((res) => res.json())
       .then(() => {
+        setLoading(false);
         refetch();
       });
   };
@@ -32,12 +38,8 @@ const OrderRow = ({
       <td>{totalPrice}</td>
       <td>{status || 'pending'}</td>
       <td>
-        {!paid && (
-          <div className="badge badge-primary">unpaid</div>
-        )}
-        {paid && (
-          <div className="badge badge-success">paid</div>
-        )}
+        {!paid && <div className="badge badge-primary">unpaid</div>}
+        {paid && <div className="badge badge-success">paid</div>}
       </td>
       <td>
         {paid && status !== 'Shipped' && (
@@ -45,7 +47,7 @@ const OrderRow = ({
             className="btn btn-secondary btn-xs"
             onClick={() => changeStatus(_id)}
           >
-            Shipped
+            {loading ? 'Changing...' : 'Shipped'}
           </button>
         )}
         {!paid && (

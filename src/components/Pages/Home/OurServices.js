@@ -6,7 +6,7 @@ import donation from '../../../assets/icon/donation-svgrepo-com.svg';
 const OurServices = () => {
   return (
     <div className="pb-24">
-      <h2 className="text-lg lg:text-2xl uppercase font-semibold text-primary text-center pb-8">
+      <h2 className="text-xl lg:text-2xl uppercase font-semibold text-primary text-center pb-8">
         Our services
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-3 lg:px-28">

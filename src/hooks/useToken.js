@@ -26,7 +26,6 @@ const useToken = (user) => {
   if (isLoading) {
     return <LoadingSpinner />;
   }
-
   return { token };
 };
 

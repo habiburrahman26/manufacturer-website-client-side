@@ -32,7 +32,7 @@ const Brands = () => {
 
   return (
     <div className="pb-24">
-      <h2 className="text-lg lg:text-2xl uppercase font-semibold text-primary text-center pb-8">
+      <h2 className="text-xl lg:text-2xl uppercase font-semibold text-primary text-center pb-8">
         Our Awesome Brands
       </h2>
       <Swiper

@@ -42,7 +42,7 @@ export default function Review() {
       className="pb-24 w-[300px] md:w-[900px] lg:w-[1350px] mx-auto px-3 lg:px-8"
       id="review"
     >
-      <h2 className="text-lg lg:text-2xl uppercase font-semibold text-primary text-center pb-6">
+      <h2 className="text-xl lg:text-2xl uppercase font-semibold text-primary text-center pb-6">
         Happy Clients says
       </h2>
       <Swiper

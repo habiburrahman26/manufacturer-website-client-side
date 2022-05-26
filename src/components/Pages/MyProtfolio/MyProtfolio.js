@@ -4,7 +4,7 @@ const MyProtfolio = () => {
   return (
     <>
       <PageTitle title="MyProtfolio" />
-      <div className="lg:w-[900px] mx-auto mt-10 px-3">
+      <div className="lg:w-[900px] mx-auto mt-10 px-4 py-6">
         <div className="text-center">
           <h1 className="text-lg lg:text-2xl font-semibold">
             Md.Habibur Rahman

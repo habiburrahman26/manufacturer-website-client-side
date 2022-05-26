@@ -178,7 +178,7 @@ const AddProduct = () => {
             </label>
             <textarea
               className="textarea textarea-bordered"
-              placeholder="Bio"
+              placeholder="Description"
               {...register('description', {
                 required: {
                   value: true,

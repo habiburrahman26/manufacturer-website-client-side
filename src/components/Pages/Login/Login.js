@@ -112,7 +112,7 @@ const Login = () => {
               <small className="text-red-400">{errors.password.message}</small>
             )}
             <label className="label">
-              <span className="label-text-alt text-xs" onClick={forgetPassword}>
+              <span className="label-text-alt text-xs cursor-pointer" onClick={forgetPassword}>
                 Forget password?
               </span>
             </label>
