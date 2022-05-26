@@ -14,7 +14,16 @@ const Blogs = () => {
           Lazy loading images in React.
         </p>
       </div>
-      <div className="border-2 mt-4 rounded-md p-4"></div>
+      <div className="border-2 mt-4 rounded-md p-4">
+        <h3 className="text-base lg:text-lg font-semibold">
+          What are the different ways to manage a state in a React application?
+        </h3>
+        <p>
+          There are lots of ways to manage state in a React application such as
+          useState, useReducer, ContextApi, Redux, Redux toolkit, Recoil and
+          Jotai etc.
+        </p>
+      </div>
       <div className="border-2 mt-4 rounded-md p-4">
         <h3 className="text-base lg:text-lg font-semibold">
           How does prototypical inheritance work?
@@ -37,7 +46,7 @@ const Blogs = () => {
           name?
         </h3>
         <p>
-          //search input text <br/>
+          //search input text <br />
           const [search, setSearch] = useState(null); <br />
           const searchProducts = products.filter((p) =>
           p.name.toLowerCase().includes(search.toLowerCase()) );

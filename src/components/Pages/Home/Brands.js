@@ -1,6 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay,Navigation } from 'swiper';
+import { Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import hp from '../../../assets/icon/hp-svgrepo-com.svg';
@@ -43,11 +43,10 @@ const Brands = () => {
           clickable: true,
         }}
         autoplay={{
-          delay: 1500,
+          delay: 2500,
           disableOnInteraction: false,
         }}
-        navigation={true}
-        modules={[Autoplay, Pagination,Navigation]}
+        modules={[Autoplay, Pagination]}
         className="mySwiper w-[300px] md:w-[900px] lg:w-[1200px] mx-auto px-3"
       >
         <SwiperSlide>
